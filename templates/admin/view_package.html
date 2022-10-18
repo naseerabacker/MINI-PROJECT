@@ -1,0 +1,51 @@
+
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends "newadmin.html" %}
+{% block body %}
+
+<body>
+<form action="/admin_view_package_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+ <table  class="table table-striped">
+  <tr>
+    <td height="97">Destination_Name</td>
+    <td>
+      <input type="text" name="textfield" id="textfield">
+    </td>
+    <td>
+      <input type="submit" name="button" id="button" value="GO">
+   </td>
+  </tr>
+</table>
+
+<table class="table table-striped">
+  <tr>
+    <td>#</td>
+    <td>Destination</td>
+    <td>Image</td>
+
+    <td>Price</td>
+    <td>Description</td>
+    <td>&nbsp;Date</td>
+  </tr>
+  {% for i in data%}
+  <tr>
+    <td>{{loop.index }}</td>
+    <td>{{i["Destination"]}}</td>
+    <td><img src="{{i['image']}}" height="100 px" width="100 px"></td>
+    <td>{{i["Price"]}}</td>
+    <td>{{i["Description"]}}</td>
+     <td>{{i["Date"]}}</td>
+
+    <td><p><a href="/admin_edit_package/{{ i['Package_id'] }}" class="btn btn-primary py-md-3 px-md-5 mt-2">edit</a></p>
+    <p><a href="/admin_delete_package/{{ i['Package_id'] }}"class="btn btn-primary py-md-3 px-md-5 mt-2">delete</a></p></td>
+  </tr>
+  {% endfor %}
+</table>
+</form>
+</body>{% endblock %}
+<!--</html>-->

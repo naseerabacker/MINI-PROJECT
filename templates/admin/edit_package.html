@@ -1,0 +1,46 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends "newadmin.html" %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/admin_edit_package_post">
+    <input type="hidden" name="id" value="{{data1['Package_id']}}"/>
+
+<table class="table table-striped">
+  <tr>
+      <td>Destination</td>
+      <td><select name="jumpMenu" id="jumpMenu" >
+       {%for i in data%}
+
+        <option value="{{i['Destination_id']}}">{{i['Destination']}}</option>
+          {%endfor%}
+      </select></td>
+    </tr>
+
+  <tr>
+    <td>Price</td>
+    <td><input type="text" name="textfield2" id="textfield2" value="{{data1['Price']}}" /></td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td><textarea name="textarea" id="textarea" cols="45" rows="5">{{data1['Description']}}</textarea></td>
+  </tr>
+
+    <tr>
+    <td>Date</td>
+    <td><input type="date" class="form-control" name="textarea5" id="textarea5" /></td>
+  </tr>
+
+  <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" name="SAVE" class="btn btn-primary py-md-3 px-md-5 mt-2" id="SAVE" value="SAVE" />
+      </div></td>
+    </tr>
+</table>
+</form>
+</body>
+{% endblock %}

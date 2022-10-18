@@ -1,0 +1,36 @@
+{% extends "myhome2.html" %}
+{% block body %}
+<body>
+<form name="form1" method="post" action="/customer_view_destination_post">
+<table class="table table-striped">
+    <tr>
+      <td width="82">Name</td>
+      <td width="70"><input type="text" name="textfield2" id="textfield2"></td>
+      <td width="26"><input type="submit" name="button" id="button" value="GO"></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+ <table class="table table-striped">
+    <tr>
+      <td>Slno</td>
+      <td>Destination</td>
+      <td>Image</td>
+      <td>Description</td>
+      <td>&nbsp;</td>
+    </tr>
+    {% for i in data%}
+    <tr>
+      <td>&nbsp;{{loop.index  }}</td>
+      <td>&nbsp;{{i["Destination"]}}</td>
+      <td>&nbsp;<img src="{{i['image']}}" height="100 px" width="100"></td>
+      <td>{{i["Description"]}}</td>
+
+      <td><a href="/customer_view_package/{{i['Destination_id']}}">Packages</a></td>
+    </tr>
+    {%endfor%}
+  </table>
+  <p>&nbsp;</p>
+</form>
+
+</body>
+{% endblock %}

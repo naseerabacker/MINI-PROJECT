@@ -1,0 +1,43 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+{% extends "myhome2.html" %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-striped">
+    <tr>
+      <td>Slno</td>
+      
+     <td>Date</td>
+     
+      <td><p>Destination</p></td>
+   
+      <td>Image</td>
+      <td>Price</td>
+     
+      <td>Description</td>
+    </tr>
+
+    {% for i in data%}
+
+  <tr>
+    <td>{{loop.index }}</td>
+    <td>{{i["Date"]}}</td>
+    <td>{{i["Destination"]}}</td>
+   <td><img src="{{i['image']}}" height="50 px"></td>
+    <td>{{i["Price"]}}</td>
+    <td>{{i["Description"]}}</td>
+
+  </tr>
+  {% endfor %}
+
+
+
+  </table>
+</form>
+
+
+</body>
+{% endblock %}

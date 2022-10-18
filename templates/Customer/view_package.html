@@ -1,0 +1,43 @@
+{% extends "myhome2.html" %}
+{% block body %}
+<body>
+<form action="/customer_view_package" method="post" enctype="multipart/form-data" name="form1" id="form1">
+<table  class="table table-striped">
+  <tr>
+    <td height="97">Destination_Name</td>
+    <td>
+      <input type="text" name="textfield" id="textfield" class="form-control">
+    </td>
+    <td>
+      <input type="submit" name="button" id="button" value="GO" class="btn btn-primary">
+   </td>
+  </tr>
+</table>
+
+<table class="table table-striped">
+  <tr>
+    <td>#</td>
+    <td>Destination</td>
+    <td>Image</td>
+
+    <td>Price</td>
+    <td>Description</td>
+    <td>Date</td>
+    <td>&nbsp;</td>
+  </tr>
+  {% for i in data%}
+  <tr>
+    <td>{{loop.index }}</td>
+    <td>{{i["Destination"]}}</td>
+    <td><img src="{{i['image']}}" height="50 px"></td>
+    <td>{{i["Price"]}}</td>
+    <td>{{i["Description"]}}</td>
+    <td>{{i["Date"]}}</td>
+    <td><p><a href="/customer_book_package/{{ i['Package_id'] }}">Book</a></p>
+    <!--<p><a href="/admin_delete_package/{{ i['Package_id'] }}">delete</a></p></td>-->
+  </tr>
+  {% endfor %}
+</table>
+</form>
+</body>
+{% endblock %}

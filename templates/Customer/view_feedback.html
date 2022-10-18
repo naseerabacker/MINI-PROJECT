@@ -1,0 +1,27 @@
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends "myhome2.html" %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/customer_view_feedback_post">
+
+  <input type="hidden" name="cid" value="{{cid}}">
+ <table class="table table-striped">
+    <tr>
+      <td>slno</td>
+      <td>Feedback</td>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{loop.index}}</td>
+    <td>{{i['Feedback']}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
+<!--</html>-->

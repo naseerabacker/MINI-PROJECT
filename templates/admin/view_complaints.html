@@ -1,0 +1,48 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends "newadmin.html" %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/admin_view_complaints_post">
+  <table  class="table table-striped">
+    <tr>
+      <td>Date_from</td>
+      <td><input type="date" class="form-control" name="textfield" id="textfield" /></td>
+      <td>to</td>
+      <td><input type="date" class="form-control" name="textfield2" id="textfield2" /></td>
+      <td><input type="submit" class="btn btn-primary" name="button" id="button" value="Search" /></td>
+    </tr>
+  </table>
+  <table class="table table-striped">
+    <tr>
+    <td>slno</td>
+    <td>User_details</td>
+    <td>Date</td>
+    <td>Complaint</td>
+    <td>Reply</td>
+    <td>Status</td>
+      <td></td>
+
+  </tr>
+    {% for i in data%}
+  <tr>
+    <td>{{ loop.index }}</td>
+    <td>&nbsp;{{i['Username'] }}</td>
+    <td>{{i['Date'] }}</td>
+    <td>&nbsp;{{i['Complaint'] }}</td>
+    <td>&nbsp;{{i['Reply'] }}</td>
+    <td>{{i['Status'] }}</td>
+       <td ><a href="/admin_send_reply/{{ i['Complaint_id'] }}" class="btn btn-primary">Reply</a></td></tr>
+    {% endfor %}
+
+  <tr>
+      </tr>
+
+</table></form>
+</body>
+<!--</html>-->{% endblock %}

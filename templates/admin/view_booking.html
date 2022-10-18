@@ -1,0 +1,49 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends "newadmin.html" %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/admin_view_booking_post">
+ <table class="table table-striped">
+    <tr>
+      <td>From</td>
+      <td><input type="text" name="textfield" id="textfield" /></td>
+      <td>To</td>
+      <td><input type="text" name="textfield2" id="textfield2" /></td>
+      <td><input type="submit" name="button" id="button" value="GO" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <table class="table table-striped">
+
+    <tr>
+      <td>Sl.no</td>
+      <td>User_details</td>
+      <td>Trip_details</td>
+      <td>Booking_date</td>
+      <td>Amount</td>
+      <td>Status</td>
+    </tr>
+{% for i in val %}
+      <td>{{loop.index }}</td>
+      <td>{{i["Username"]}}</td>
+      <td>{{i["Description"]}}</td>
+      <td>{{i["Date"]}}</td>
+      <td>{{i["Price"]}}</td>
+      <td>{{i["Status"]}}</td>
+      <td><p><a href="#">Accept</a></p>
+      <p><a href="#">Reject</a></p></td>
+    </tr> {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+
+</form>
+</body>
+
+{% endblock %}
+<!--</html>-->
