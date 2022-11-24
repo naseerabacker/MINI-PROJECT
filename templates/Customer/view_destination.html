@@ -1,36 +1,139 @@
+
+
 {% extends "myhome2.html" %}
 {% block body %}
 <body>
 <form name="form1" method="post" action="/customer_view_destination_post">
-<table class="table table-striped">
-    <tr>
-      <td width="82">Name</td>
-      <td width="70"><input type="text" name="textfield2" id="textfield2"></td>
-      <td width="26"><input type="submit" name="button" id="button" value="GO"></td>
-    </tr>
-  </table>
-  <p>&nbsp;</p>
- <table class="table table-striped">
-    <tr>
-      <td>Slno</td>
-      <td>Destination</td>
-      <td>Image</td>
-      <td>Description</td>
-      <td>&nbsp;</td>
-    </tr>
-    {% for i in data%}
-    <tr>
-      <td>&nbsp;{{loop.index  }}</td>
-      <td>&nbsp;{{i["Destination"]}}</td>
-      <td>&nbsp;<img src="{{i['image']}}" height="100 px" width="100"></td>
-      <td>{{i["Description"]}}</td>
+<!--<table class="table table-striped">-->
+    <!--<tr>-->
+      <!--<td width="82">Name</td>-->
+      <!--<td width="70"><input type="text" name="textfield2" id="textfield2"></td>-->
+      <!--<td width="26"><input type="submit" name="button" id="button" value="GO"></td>-->
+    <!--</tr>-->
+  <!--</table>-->
+  <!--<p>&nbsp;</p>-->
+ <!--<table class="table table-striped">-->
+    <!--<tr>-->
+      <!--<td>Slno</td>-->
+      <!--<td>Destination</td>-->
+      <!--<td>Image</td>-->
+      <!--<td>Description</td>-->
+      <!--<td>&nbsp;</td>-->
+    <!--</tr>-->
+    <!--{% for i in data%}-->
+    <!--<tr>-->
+      <!--<td>&nbsp;{{loop.index  }}</td>-->
+      <!--<td>&nbsp;{{i["Destination"]}}</td>-->
+      <!--<td>&nbsp;<img src="{{i['image']}}" height="100 px" width="100"></td>-->
+      <!--<td>{{i["Description"]}}</td>-->
 
-      <td><a href="/customer_view_package/{{i['Destination_id']}}">Packages</a></td>
-    </tr>
-    {%endfor%}
-  </table>
-  <p>&nbsp;</p>
+      <!--<td><a href="/customer_view_package/{{i['Destination_id']}}">Packages</a></td>-->
+    <!--</tr>-->
+    <!--{%endfor%}-->
+  <!--</table>-->
+  <!--<p>&nbsp;-->
+
+
+
+
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
+                <h1>Tours & Travel Services</h1>
+            </div>
+
+
+
+<div class="row">
+    {% for i in data%}
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                        <!--<i class="fa fa-2x fa-route mx-auto mb-4"></i>-->
+                            <img src="{{i['image']}}" height="250px" width="100%">
+
+                        <h5 class="mb-2">{{i["Destination"]}}</h5>
+                       <p class="m-0">{{i["Description"]}}</p>
+
+      <td><a href="/customer_view_package/{{i['Destination_id']}}">PACKAGES</a></td>
+
+                    </div>
+                </div>
+
+
+                    {%endfor%}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </form>
 
 </body>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

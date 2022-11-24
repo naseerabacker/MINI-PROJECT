@@ -1,0 +1,68 @@
+<!--<!DOCTYPE html>-->
+
+
+
+{% extends "newadmin.html" %}
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="form1" name="form1" method="post" action="/admin_view_users">
+
+<table class="table table-striped">
+
+    <tr>
+      <td>User_id</td>
+      <td>User_name</td>
+      <td>Gender</td>
+        <td>Adress</td>
+      <td>Email</td>
+      <td>Phone_number</td>
+      <td>login_id</td>
+        <td></td>
+    </tr>
+{% for i in val %}
+     <tr> <td>{{loop.index }}</td>
+      <td>{{i["Username"]}}</td>
+      <td>{{i["Gender"]}}</td>
+      <td>Place :{{i['Place']}}<br>Post :{{i['Post']}}<br>Pin :{{i['Pin']}}<br>City :{{i['City']}}</td>
+      <td>{{i["Email"]}}</td>
+      <td>{{i["Phone_number"]}}</td>
+      <td>{{i["login_id"]}}</td>
+
+<td></td>
+
+      <!--<td><p><a href="/customer_accept_booking/{{i['Booking_id']}}">Accept</a></p>-->
+     <!--<td> <p><a href="/customer_cancel_booking/{{i['Booking_id']}}" onclick="return confirm('Are you sure to cancel?')">Reject</></p></td>-->
+    </tr> {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+
+</form>
+</body>
+
+<!--<!>&ndash;&gt;-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+<!--</body>-->
+<!--</html>-->

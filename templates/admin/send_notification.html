@@ -1,0 +1,18 @@
+{% extends "newadmin.html" %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/admin_send_notification_post">
+
+  <input type="hidden" name="lid" value="{{ lid }}">
+  <table class="table table-striped">
+    <tr>
+      <td>Notification</td>
+      <td><textarea name="textarea" id="textarea" cols="45" rows="5"></textarea></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" name="button" id="button" value="notification" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

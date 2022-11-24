@@ -7,6 +7,99 @@
 {% extends "myhome2.html" %}
 {% block body %}
 <body>
+
+
+
+<!--<style>-->
+  <!--.rating {-->
+  <!--display: inline-block;-->
+  <!--position: relative;-->
+  <!--height: 50px;-->
+  <!--line-height: 50px;-->
+  <!--font-size: 50px;-->
+<!--}-->
+
+<!--.rating label {-->
+  <!--position: absolute;-->
+  <!--top: 0;-->
+  <!--left: 0;-->
+  <!--height: 100%;-->
+  <!--cursor: pointer;-->
+<!--}-->
+
+<!--.rating label:last-child {-->
+  <!--position: static;-->
+<!--}-->
+
+<!--.rating label:nth-child(1) {-->
+  <!--z-index: 5;-->
+<!--}-->
+
+<!--.rating label:nth-child(2) {-->
+  <!--z-index: 4;-->
+<!--}-->
+
+<!--.rating label:nth-child(3) {-->
+  <!--z-index: 3;-->
+<!--}-->
+
+<!--.rating label:nth-child(4) {-->
+  <!--z-index: 2;-->
+<!--}-->
+
+<!--.rating label:nth-child(5) {-->
+  <!--z-index: 1;-->
+<!--}-->
+
+<!--.rating label input {-->
+  <!--position: absolute;-->
+  <!--top: 0;-->
+  <!--left: 0;-->
+  <!--opacity: 0;-->
+<!--}-->
+
+<!--.rating label .icon {-->
+  <!--float: left;-->
+  <!--color: transparent;-->
+<!--}-->
+
+<!--.rating label:last-child .icon {-->
+  <!--color: #000;-->
+<!--}-->
+
+<!--.rating:not(:hover) label input:checked ~ .icon,-->
+<!--.rating:hover label:hover input ~ .icon {-->
+  <!--color: #09f;-->
+<!--}-->
+
+<!--.rating label input:focus:not(:checked) ~ .icon:last-child {-->
+  <!--color: #000;-->
+  <!--text-shadow: 0 0 5px #09f;-->
+<!--}-->
+<!--</style>-->
+
+<!--<script src="https://cpwebassets.codepen.io/assets/common/browser_support-2c1a3d31dbc6b5746fb7dacdbc81dd613906db219f13147c66864a6c3448246c.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/common/everypage-2e5eb3b6864f69eebe56d6a6865391d564ae6ea1d098dfc9a05c06299edc21ec.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/common/analytics_and_notifications-dabea89133f3a919e973a927aebbc27318967ac159bc8c7b657d656880822e14.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/packs/js/vendor-3505a803e046cd1e86e8.chunk.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/packs/js/1-556e6cf6a2b67384e854.chunk.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/packs/js/referrer-tracking-a5c592b11d5eca461b9a.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/packs/js/vendor-3505a803e046cd1e86e8.chunk.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/packs/js/1-556e6cf6a2b67384e854.chunk.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/packs/js/everypage-3d10b221dc683dd55960.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/packs/js/vendor-3505a803e046cd1e86e8.chunk.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/packs/js/1-556e6cf6a2b67384e854.chunk.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/packs/js/firebaseConnectLibs-988c04c825a80933890a.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/packs/js/vendor-3505a803e046cd1e86e8.chunk.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/packs/js/1-556e6cf6a2b67384e854.chunk.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/packs/js/processorRouter-d443137ca34083bd2a33.js"></script>-->
+<!--<script src="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/editor/global/commonLibs-18d595d95e5894ceae5661c7e40deeca7df254309b42f89edce76949b15a0f31.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/editor/global/codemirror-6d6ba1f6339a77e050b2e97848352d1b8d1b97895d23f086f644ecb200abfd59.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/libs/emmet-codemirror-plugin-f3955bea0403e8137caacd73a1e42bb551794f7ce15ae59103c64a2736b2757c.js"></script>-->
+<!--<script src="https://cpwebassets.codepen.io/assets/editor/pen/index-f17932e1fc830c7e060af1e8eecbedb9fcce0a3d9601a1554bd9cc264b69a6e5.js"></script>-->
+
+
 <form id="form1" name="form1" method="post" action="/customer_send_feedback_post">
 
   <table class="table table-striped">
@@ -14,6 +107,41 @@
       <td>Feedback</td>
       <td><textarea name="textarea" id="textarea" cols="45" rows="5"></textarea></td>
     </tr>
+
+    <!--<form class="rating">-->
+  <!--<label>-->
+    <!--<input type="radio" name="stars" value="1" />-->
+    <!--<span class="icon">★</span>-->
+  <!--</label>-->
+  <!--<label>-->
+    <!--<input type="radio" name="stars" value="2" />-->
+    <!--<span class="icon">★</span>-->
+    <!--<span class="icon">★</span>-->
+  <!--</label>-->
+  <!--<label>-->
+    <!--<input type="radio" name="stars" value="3" />-->
+    <!--<span class="icon">★</span>-->
+    <!--<span class="icon">★</span>-->
+    <!--<span class="icon">★</span>-->
+  <!--</label>-->
+  <!--<label>-->
+    <!--<input type="radio" name="stars" value="4" />-->
+    <!--<span class="icon">★</span>-->
+    <!--<span class="icon">★</span>-->
+    <!--<span class="icon">★</span>-->
+    <!--<span class="icon">★</span>-->
+  <!--</label>-->
+  <!--<label>-->
+    <!--<input type="radio" name="stars" value="5" />-->
+    <!--<span class="icon">★</span>-->
+    <!--<span class="icon">★</span>-->
+    <!--<span class="icon">★</span>-->
+    <!--<span class="icon">★</span>-->
+    <!--<span class="icon">★</span>-->
+  <!--</label>-->
+<!--</form>-->
+
+
     <tr>
       <td colspan="2"><input type="submit" name="button" id="button" value="Send feedback"/></td>
     </tr>

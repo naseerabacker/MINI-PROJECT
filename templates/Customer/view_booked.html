@@ -1,35 +1,44 @@
-<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
-<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
-<!--<head>-->
+
 {% extends "myhome2.html" %}
 {% block body %}
 
 <body>
-<form id="form1" name="form1" method="post" action="">
-  <table class="table table-striped">
-    <tr>
-      <td>Slno</td>
-      
-     <td>Date</td>
-     
-      <td><p>Destination</p></td>
-   
-      <td>Image</td>
-      <td>Price</td>
-     
-      <td>Description</td>
-    </tr>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 
+<form id="form1" name="form1" method="post" action="customer_view_booked_package_post">
+  <table class="table table-striped" id="productstable">
+      <thead>
+    <tr>
+      <th>Slno</th>
+      
+     <th>Date</th>
+     
+      <th><p>Destination</p></th>
+   
+      <th>Image</th>
+      <th>Price</th>
+     
+      <th>Description</th>
+      <th>Status</th>
+
+        <th></th>
+    </tr>
+</thead>
     {% for i in data%}
 
   <tr>
     <td>{{loop.index }}</td>
-    <td>{{i["Date"]}}</td>
+    <td>{{i["date"]}}</td>
     <td>{{i["Destination"]}}</td>
-   <td><img src="{{i['image']}}" height="50 px"></td>
+   <td><img src="{{i['image']}}"  height="100 px" width="100"></td>
     <td>{{i["Price"]}}</td>
     <td>{{i["Description"]}}</td>
+            <td>{{i["Status"]}}</td>
 
+ <td><p><a href="/customer_cancel_booking/{{i['Booking_id']}}" onclick="return confirm('Are you sure to cancel?')">Cancel booking</a></p>
+      <p>{% if i['Status']=='approved' %}<a href="/customer_pay_amount/{{i['Booking_id']}}">Proceed to payment</a>{% else %}{% endif %}</p></td>
   </tr>
   {% endfor %}
 
@@ -38,6 +47,10 @@
   </table>
 </form>
 
-
+<script>
+    $(document).ready(function(){
+    $('#productstable').DataTable();
+    });
+</script>
 </body>
 {% endblock %}

@@ -1,0 +1,3491 @@
+\documentclass[a4paper,12pt,toc=flat]{report}
+\usepackage{times}
+\usepackage{sectsty}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{blindtext}
+\usepackage[a4paper,total={6in,9in}]{geometry}
+
+
+%\RequirePackage[left=6.1cm,top=2cm,right=1.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
+
+%\usepackage[a4paper,total={6in,8in}]{geometry}
+
+
+\sectionfont{\fontsize{12}{15}\selectfont}
+\subsectionfont{\fontsize{11}{12}\selectfont}
+
+
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+\usepackage{titletoc}% http://ctan.org/pkg/titletoc
+\titlecontents{chapter}% <section-type>
+[0pt]% <left>
+{}% <above-code>
+{\bfseries\chaptername\ \thecontentslabel\quad}% <numbered-entry-format>
+{}% <numberless-entry-format>
+{\bfseries\hfill\ \contentspage}% <filler-page-format>
+
+
+\linespread{1.5}
+
+\usepackage[pagestyles]{titlesec}
+
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\centering}{\centering\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}
+{0pt}{50pt}{40pt}
+
+\pagenumbering{none}
+\begin{document}
+	
+	{\centering \bf \large
+		 AI BASED FITNESS CENTER USING CNN ALGORITHM\par
+	}
+	\begin{center}
+		{\small PROJECT REPORT} \vspace*{17pt}
+		\\ Submitted by\\
+		\vspace*{17pt}
+		{\bf GAYATHRI UNNI P \\
+			KMC19MCA004\\
+			\vspace*{23pt}
+			to}\\
+		\vspace*{15pt}
+		the APJ Abdul Kalam Technological University in partial fulfillment of
+		the requirements for the award of the Degree\\
+		\vspace*{9pt} of\\
+		\vspace*{9pt} \textit{ Master of Computer Applications
+		} 
+		\vspace*{15pt}
+		\begin{figure}[bph]
+			\centering
+			\includegraphics[width=0.3023\linewidth]{kmctlogo }
+			
+			\label{fig:kmctlogo}
+		\end{figure}
+		
+		\bf{Department Of Management Studies  \& Computer Applications
+			\vspace*{12pt}
+			\\KMCT College of Engineering
+			\vspace*{8pt}
+			\\Kallanthode, NITC P.O, Kozhikode-673601}
+		
+	\end{center}
+	\begin{center}
+		\vspace*{6pt}MAY 2022
+	\end{center}
+	
+	\thispagestyle{empty}
+	\clearpage
+	\pagebreak
+
+	
+		{\centering \bf \large
+		DECLARATION\par
+	}
+	
+	\vspace*{20pt}
+	{\normalsize I undersigned hereby declare that the project report “{\bfseries 
+			AI Based Fitness Center using CNN Algorithm}”, submitted for partial fulfillment of the requirements for the award of degree of Master of Computer Applications of the APJ Abdul Kalam Technological University, Kerala is a bonafide
+		work done by me under supervision of {\bf Mrs. Sharafunnissa O}. This submission represents my ideas in my
+		own words and where ideas or words of others have been included, I have adequately and accurately
+		cited and referenced the original sources. I also declare that I have adhered to ethics of academic
+		honesty and integrity and have not misrepresented or fabricated any data or idea or fact or source
+		in my submission. I understand that any violation of the above will be a cause for disciplinary action
+		by the institute and/or the University and can also evoke penal action from the sources which have
+		thus not been properly cited or from whom proper permission has not been obtained. This report
+		has not been previously formed the basis for the award of any degree. } \\
+	
+	
+	\vspace{20pt}
+	\begin{center}
+		Place: Kallanthode \hspace*{14.5pt} \hfill  GAYATHRI UNNI P  \\ \hfill\\ \hfill  \\
+		\vspace*{10pt}
+		Date: 07-05-2022 \hspace*{0pt} \hfill 
+		\vspace{10pt}
+		
+		
+		
+	\end{center}
+	
+	\pagebreak
+	\begin{center}
+		
+		\textbf{
+			\vspace*{8pt}
+			DEPARTMENT OF MANAGEMENT STUDIES \& COMPUTER
+			\vspace*{8pt}
+			APPLICATIONS\\
+			KMCT COLLEGE OF ENGINEERING\\
+			\vspace*{8pt}
+			Kallanthode, NITC P.O, Kozhikode-673601
+		}
+		
+		\begin{figure}[bph]
+			\centering
+			\includegraphics[width=0.3023\linewidth]{"C:/Users/user/Desktop/fitness center/pic/kmctlogo.jpg"}
+			\label{fig:ksblogo}
+		\end{figure}
+	\end{center}
+	{\centering \bf \large
+		CERTIFICATE\par
+	}
+	\vspace*{10pt}
+	This is to certify that the report entitled "{\bf 
+		AI Based Fitness Center Using CNN Algorithm}"submitted
+	by {\bf GAYATHRI UNNI P (KMC19MCA004)}
+	to the APJ Abdul Kalam Technological University
+	in partial fulfillment of the requirements for the award of the Degree of Master of Computer
+	Applications is a bonafide record of the project work carried out by her under our guidance and
+	supervision. This report in any form has not been submitted to any other University or Institute for
+	any purpose.
+	
+	\begin{center}\vspace*{20pt}
+		Internal Supervisor \hspace*{0pt} \hfill  Project Coordinator
+	\end{center}
+	
+	\begin{center}\vspace*{40pt}
+		\hspace*{0pt} \hfill  Head Of The Department
+	\end{center}
+	\pagebreak
+	%\addcontentsline{toc}{section}{ACKNOWLEDGEMENT}
+	\section*{\centering \bf \large ACKNOWLEDGEMENT}
+	
+	
+	\vspace*{20pt}I would like to take this opportunity to extend my sincere thanks to people who helped me to make
+	this project possible. This project will be incomplete without mentioning all the people who helped
+	me to make it real.\\
+	
+	\hspace{12pt}First and foremost I thank {\bf Dr. Sabiq P V (Principal of KMCT College of Engineering)} who
+	gave me all support to this project. I also thank {\bf Mr. Ajayakumar K K (Head of the Department,
+		MCA)} for providing all the facilities and resources for my project. I would also like to express my
+	gratitude towards {\bf Mrs. Sabna T S (Assistant Professor, MCA)}, Project Coordinator and  {\bf Mrs. Sharafunnissa O (Assistant Professor, MCA)}, Project Guide for their
+	continuous support, guidance and supervision without which the project wouldn’t have been a
+	reality.  I would also take this
+	opportunity to thank all my friends who took time out of their busy schedule to encourage, support
+	and motivate me which has been the key reason for the successful completion of this project.\\ 
+	
+	Above all I thank God, the almighty for his grace without which it would not have been
+	possible to complete this work on time.	
+	
+	
+	
+	\pagebreak
+	
+	
+	
+
+	%\addcontentsline{toc}{section}{ACKNOWLEDGEMENT}
+	
+	%\addcontentsline{toc}{section}{ABSTRACT}
+	\section*{\centering \bf \large ABSTRACT}
+			\pagenumbering{roman}
+	\vspace*{20pt}
+		\par
+	\hspace*{12pt}
+	In this modern world, computer becomes more and more popular and important to our society. We can use computer everywhere and they are very useful and helpful to our daily life. Like computers online websites has a crucial role in the daily life. Now we have the facility to know about anything in the world through the various sites in a single click. So here this project aimed to develop a site based on Gymnasium for the people who wish to maintain their health and body fitness regularly. Gym Management System allows the user to store the food details, employee details, the details of person who is in the gym, gym equipment details etc.  This software package allows storing the details of all the data related to a gymnasium. Gym management software helps fitness owners and operators manage their class and trainer scheduling, keep track of their members, communicate with clients.\\
+	\hspace*{12pt}
+	The main objective of the Fitness Centre Management System is to manage the details of Fitness Centre, Fitness Master,  Member, Diets. It manages all the information about Fitness Centre,  Diets. The Project is totally built at administrative end and thus only the administrator is guaranteed the access. The purpose of the project is to build an application program to reduce the manual work for managing the Fitness Centre, Fitness Master, Health,  it tracks all the details about the Employee, Member, Diets. This  also incorporate bodymeasurement of user with the help of CNN Algorithm and also find the nutrient content of food.  Gyms have become an essential part of our lives, providing the best exercise and body-building facilities to our society.
+	\pagebreak
+	
+	\tableofcontents{}
+	
+	\pagebreak
+	\addcontentsline{toc}{section}{LIST OF FIGURES}
+	\listoffigures
+	
+    \pagebreak
+    
+    \addcontentsline{toc}{section}{LIST OF TABLES}
+    \listoftables
+    
+    \pagebreak
+	
+	
+	\chapter{INTRODUCTION}
+	
+	\hspace*{12pt}Gyms have become an essential part of our lives, providing the best exercise and body-building facilities to our society. Therefore, at the management end there are some necessary steps to maintain the records of every individual including a trainer, trainees, and staff but maintaining the records on paper is very difficult so, it is necessary to have a computerized system that manages all these issues. Gym Management Systems typically offer a wealth of solutions for every day operation, streamlining processes in a way that can enhance the customer experience. From online gym scheduling and automated billing to administrative tasks, the software pulls all data into one place so that you can run your business more efficiently. Gym management software is generally designed to streamline operations so that all of these tasks can be in one place. In a world where technological advances occur so quickly, it can feel like a challenge to keep up. But gym and fitness clubs can maximize business potential through gym management software. Simply, gym management software is a type of software that provides fitness businesses the functionality needed to manage all aspects of their business and efficiently operate their studio. Gym management software can also be referred to as club management software, fitness software, or gym scheduling software. Regardless of the nomenclature, these platforms all share similar feature sets and are used for the same purposes. Gym management software helps fitness owners and operators manage their class and trainer scheduling, keep track of their members, communicate with clients. Assuming clients enjoy the workouts and the sense of community at your studio, if the software is user friendly when they’re scheduling from a mobile app or on their computer, then they’ll continue to come back. The main objective of the Fitness Centre Management System is to manage the details of Fitness center, Fitness Master,  Member, Diets. It manages all the information about Fitness centre, Health, Diets. The project is controlling the administrator. The purpose of the project is to build an application program to reduce the manual work for managing the Fitness centre, Fitness Master, Health it tracks all the details about the Employee, Member, Diets. This project also incorporate bodymeasurements with the help of their photo using CNN Algorithm,and also find the nutrient content of food to capture an image then get the result.CNNs are powerful image processing, artificial intelligence (AI) that use deep learning to perform both generative and descriptive tasks, often using machine vision that includes image and video recognition, along with recommender systems and natural language processing (NLP). 
+	\pagenumbering{arabic}
+	\section{General Background}
+	
+	
+	
+	\hspace*{12pt}“Health care” Fitness center follows traditional fitness Center Managements, there is no guarantee for a computers or system to keep record of the Customers to be present. There is no suitable timetable for customers  and their workout is not arranged properly. So, there can be a clash in daily schedules. Since the records are in written documents, it is difficult to find the user names, Workout timings, summary etc. Administrator will be having a poor control over the Gym. They Using Paper work and direct human language communication to manage the Gym System will create problems, in terms of member records and their transactions which minimize the overall performance of the system and do not fulfill the requirements.  \\
+	
+	\pagebreak
+	
+	\section{Objective}
+	\hspace*{12pt}In the AI based fitness management system provides a computer-based management system for keeping all records about Machinery, Members, and manage Fitness center, Fitness Master, Member, Diets, Workouts. This system helps the Owner and Admin to maintain large data about users and their daily plans in the gym center. This system is helping in creating reports and other record. The system is also suitable for users for an online profile my Gym Management system is the best option for it. It reduces and removes the manual and traditional workload. Administrator can easily add/ delete/ update/view each record on the computer. Mainly this project also incorporates bodymeasuremets with the help of CNN Algorithm and also predict the nutrient content of food with the help of image capture.  
+	
+	
+	
+	\hspace*{12pt}
+	\pagebreak
+		\chapter{LITERATURE REVIEW}
+	
+	
+	\hspace*{12pt}{
+		Image Recognition and detection is a classic machine
+		learning problem. It is a very challenging task to detect an
+		object or to recognize an image from a digital image or a
+		video. Image Recognition has application in the various
+		field of computer vision, some of which include facial
+		recognition, biometric systems, self-driving cars, emotion
+		detection, image restoration, robotics and many more.
+		
+		In recent years there have been great strides in building classifiers for image detection and recognition on various datasets using various machine learning algorithms.
+		Norhidayu binti Abdul Hamid et al. [1] evaluated the performance on MNIST datasets using 3 different classifiers: SVM (support vector machines), KNN (K-nearest Neighbor) and CNN (convolutional neural networks).\\
+	 In this paper, Based on machine learning that automatically performs accurate classification of food images and estimates food attributes. This paper proposes a deep learning model consisting of a convolutional neural network that classifies food into specific categories in the training part of the prototype system. The main purpose of the proposed method is to improve the accuracy of the pre-training model. This paper designs a prototype system based on the client server model. The client sends an image detection request and processes it on the server side. The prototype system is designed with three main software components, including a pre-trained CNN model training module for classification purposes, a text data training module for attribute estimation models, and a server-side module. I experimented with a variety of food categories, each containing thousands of images, and through machine learning training to achieve higher classification accuracy.  Keywords: Food Recognition,  Nutrition  Estimation, Machine Learning, Deep Learning, Convolutional Neural Network.
+	 \\   In Smart devices are playing an increasingly important role in daily life, and the use of smart devices for the treatment of various diseases is not uncommon[2].To accomplish this goal, I propose a system or application to assist normal people as well as obese people in balancing their diet by measuring daily intake food attributes and ingredients through their ease. The proposed application will enable the user to figure out the content of the food item by providing the photograph of food to the system. The application will detect the food items within the photograph and recognize them using Convolution Neural Network. The system will also be able to estimate the food attributes by crawling data from the Internet. 
+		\\
+		A pre-trained network model is used in machine learning to overcome the problem that the system gets stuck in local solution while in its training age. These models can carry out machine training to respond immediately to different data. A CNN model that I used in my suggested process of transferring learning -based food recognition and extraction attributes uses a variety of food items from our prepared dataset to get different characteristics from an object [3].
+		\\
+		To obtain the needed characteristics from the images of various foods them assign for their research, They categorize each image into its corresponding class. To this end, with the help of different attributes, I distinguish each and every class. For my study, the size of the text data  receive from the internet is nearly 1.8 GB. I used two completely different frameworks to gather data. Common Crawl [4]  is the first and Scrapy [5] is the second. I collected about 100 MB of data using Scrapy while using Common Crawl I collected 1.7 GB of data
+		\\
+		Data sets and features have a great impact on the detection results. Existing data sets are not sufficient and contain limited parameters such as different lighting conditions, camera angles, different backgrounds, etc. In future research, better review techniques [6] should be used to review various types of data sets. In addition, the system and application are optimized architecturally, and a database for storing calculated values, food labels, and other parameters is combined with a faster lookup technique to process the image. \\
+		 Body measurements is based on CNN algorithm.
+		 Convolutional neural networks is a powerful deep learning algorithm capable of dealing with millions of parameters and saving the computational cost by inputting a 2D image and convolving it with filters/kernel and producing output volumes. \\
+		The objective of this work is to present an accessible,
+		efficient, fast, and fully automatic method to perform the
+		prediction of body measurements from 2D images through
+		image segmentation using CNNs and machine learning. This section describes the adopted methodology of this
+		work. Firstly, I present the acquisition pattern to the human
+		body images; then, I describe the segmentation approach.
+		Finally, I explain how I measure each limb in the human
+		body
+		\\ Convolutional Neural Network (CNN) of human pose estimation, starts the process for the initialization of our approach
+		by calculating human body measures only using images from
+		body perspectives.
+		Framework [7], supported the implementation of Human Pose Estimation Convolutional Neural Network, already
+		trained to detect a human body in digital images.
+	
+		
+		
+		
+		
+	
+	
+	
+
+
+
+
+
+
+\pagebreak
+	
+	\chapter{SYSTEM ANALYSIS}
+	\section{Existing system}
+	\hspace*{12pt}{        In every Gym or Fitness Center there is no guarantee for a computers or system to keep record of the Customers to be present. There is no suitable timetable, customers workout is not arranged properly. So, there can be a clash in daily schedule. Since the records are in written documents, it is difficult to find the user names, Workout timings, summary etc. Administrator will be having a poor control over the Gym. They Using Paper work and direct human language communication to manage the Gym System will create problems, in terms of member records and their transactions which minimize the overall performance of the system and do not fulfil the requirements. \\
+		\hspace*{12pt}The existing Gym Management System did not have a user-friendly interface. The details regarding gym members were manually written and recorded. Data redundancy and inconsistency makes the existing system odd and inefficient. Entering everything manually to the computer by creating a file is not exactly what we are talking about in computerization. The existing system requires a lot of manual work which results in taking more time than it should. These practices are not at all reliable as the one wrong entry can take a lot of time in detection and then there is a correction.\\
+		\hspace*{12pt}   This introduced the system to reduce the manual work effectively as there is the backend of the system which will take care of synchronizing and updating the data for the system. All works are done in manually, that is time consuming.
+	
+		\hspace*{12pt} “Health Care fitness center” in Edavannappara, Malappuram is one of the top players in the field of body building and physical fitness training in the Malappuram district, even though it is a well organised fitness center it still follows a traditional fitness management. It requires a user to provide with necessary information in order to get an admission to the center. The necessary information such as user details name, address, age, sex, weight, height, health issues  etc. They provide many services such as those to reduce weight, cardio training, strength training, steam bath, men and women fitness, body building, aesthetic fitness. The working time of gym is 6am to 9am and 3pm to 9pm. A normal customer has to pay a thousand rupees per month and an amount of Eight hundred rupees as admission fee. In order to get a personal trainer a customer have to pay six thousand rupees per month. Customers can take leave for one day in a week and other days they have to come and workout without fail. A customer can work out one and half hours or maximum 2 hours. They have four staff’s three male and one female. Female customers can work out from 3pm to 6pm, Other times allotted to men.
+		\\
+		\hspace*{12pt}
+		Considering the records, all records are stored in paper works in the center. Diet plans and workout plans will be communicated by the trainers. Hence the information’s will not be globally available to both the administrator or the trainers when required at the right place and time.
+		
+		
+	}
+	
+	\pagebreak
+	\section{Proposed system}
+	\hspace*{12pt}       Fitness Gym Management System provides a computer-based management system for keeping all records about Members, Machinery, and manage Fitness centre, Fitness Master, Member, Diets. This system helps the Owner and Admin to maintain large data about users and their daily transactions in gymnasium System is helping in creating reports and other record. The system is also suitable for users for an online profile my Gymnasium Management System is the best option for it. It reduces and removes the manual and traditional workload. Administrator can easily add/ delete/ update/view each record on the computer. In the gym management system, after the planning and analysis phase of the system gets completed. This is a very helpful system that will be the backbone of the whole management of the gym so ignoring the risk or error is not an option as later it can make a greater form of itself. So, it is better to minimize the problems faced by both staff and the manager in the Organization. Another interesting part is that the users of the application can check by their bodymeasuremets and nurient content of food with the help of images using CNN algorithm. Modules are Admin, Staff/Personal trainer, User, Public.\\
+	\hspace*{12pt}
+	The main factor of the fitness center is bodymeasurements with the help of machine learning. This is working with the help of image capturing. The user capture an image an get the bodymeasurements. Then another is prediction of nutrient content of food with the help of food image.  Machine learning is a branch of artificial intelligence (AI) and computer science which focuses on the use of data and algorithms to imitate the way that humans learn, gradually improving its accuracy. Machine learning is an important component of the growing field of data science. Through the use of statistical methods, algorithms are trained to make classifications or predictions, uncovering key insights within data mining projects. In this project  use CNN Algorithm.\\
+		\pagebreak
+	Main activities of  modules are:
+	
+	{\bf \hspace{-20pt} Services/program}
+	
+	
+	After the successful login into the system with the username and password, Then admin add different services like weight loss, cardio training, Strength training, steam bath, Men and women fitness, Body building, Aesthetic fitness.\\
+	
+	{\bf \hspace{-20pt} Staff management}
+	
+	
+	Admin can add staff with their name and details. Then admin also view the staff and edit the details and delete.\\
+	
+	{\bf \hspace{-20pt} Machine management}
+	
+	
+	Admin can also add the machines and their picture and a small description about those machines, and also view it.\\
+	
+	{\bf \hspace{-20pt} Working hour management}
+	
+	
+	Staff manage the working hours and make the schedules to the clients. The users are working with this working hour.
+	\\
+	
+	{\bf \hspace{-20pt}  View user and opted services}
+	
+	
+	The admin can view the user details with their opted services, and their staff. Then the users who are created an account with name, age, address, weight, height, have any health problems. The admin can view all the details about the user.\\
+	
+	{\bf \hspace{-20pt}View allocation request of user }
+	
+	
+	The admin can allocate a personal trainer according to user wish. That also view by the admin. Then its view the user. This allocation is on the basic of user request. The  admin firstly view the request for user then admin accept or reject the request.\\
+	\pagebreak \\
+	
+	{\bf \hspace{-20pt} Normal diet plan}
+	
+	
+	The admin can have option for making a diet plan, that is for general category users. It has the quantity of food, type of foods, quantity of drinking water, type of food product for our workout plans. The normal work out plan is done by the general category of users.
+	\\
+	
+	{\bf \hspace{-20pt} Normal workout plan}
+	
+	
+	The admin can have an option for workout plan, that have the working times and what are the services are done and which machineries are used. This workout plans are made by general category of users. \\
+	
+	{\bf \hspace{-20pt} View review }
+	
+	
+	The admin can view the reviews of user.  The user  create the review just enter the review and also enter rating.
+	\\
+	{\bf \hspace{-20pt} View profile}
+	
+	
+	After the successful login into the system with the username and password.  He/she view the entered details such as name, age, experience, qualification, achievement. Then the trainer views his/her profile and edit. Registered user can view profile and can edit the details such as name, experience, achievement.
+
+	\\
+	
+
+
+	
+	{\bf \hspace{-20pt} View allocated user}
+	
+	
+	The staff can view their allocated users that are added by admin. With the name of user and their services. So identify the user details.\\
+	
+	{\bf \hspace{-20pt} Schedule fixing }
+	
+	The staff fixes the schedule of user have personal trainer category. They make a time schedule to their own  users. \\
+	
+
+
+	
+	{\bf \hspace{-20pt} Diet plan creation}
+	
+	
+	Staff can also create a diet plan for their client. That include quantity of food and drinking water, type of foods, timing. This is done by only the personal trainer category.
+		\pagebreak\\
+	{\bf \hspace{-20pt} Workout plan creation }
+	
+	Staff can also create a workout plan for their own personal trainer.\\
+
+	
+	{\bf \hspace{-20pt} View profile}
+	
+	
+	After the successful login into the system with the username and password, then user view the profile with the data can be entered at the registration time. They have name, age, sex, address, height, weight…etc. 
+	  \\
+	
+	
+	{\bf \hspace{-20pt}View services/programs}
+	
+	
+	The user can view the services that added by the admin that’s are weight loss, cardio training, Strength training, steam bath, Men and women fitness, Body building, Aesthetic fitness,.
+ 
+	\\
+	{\bf \hspace{-20pt}View Staff}
+	
+	The user can also view the trainer that is added by the admin. That have the details of trainers like name, qualification, experience, achievements.
+
+	
+	{\bf \hspace{-20pt}Personal trainer choosing request}
+	
+	The user can also choose which type of training they have that is general or personal training. Then user can choose an option for a personal trainer that is send to the admin. That is send a request message to admin.
+	
+	
+	
+	{\bf \hspace{-20pt}View normal diet plan}
+	
+	The user can view the diet plan for added by the admin for normal/general category of users.
+	They have the working time,  quantity of food and drinking water, type of food etc.
+	\\
+	{\bf \hspace{-20pt}View normal working plan}
+	
+	The user can view the normal working plans for normal/general category of users. They have the timing of workouts, which machineries are used.
+	
+	
+	{\bf \hspace{-20pt}View scheduling}
+	
+	The user can view their own scheduling time for added by the personal trainer/staff. That have the work out times and trainer name.	\pagebreak
+	\\
+	{\bf \hspace{-20pt}View workout plans}
+	
+	The user can view their own workout plans. That have which type of work out are done. Timing of workouts. This added by the staff. 
+	\\
+	{\bf \hspace{-20pt}View diet plans}
+	
+	The user also can view their own diet plans, they have which type of food are eat, quantity of food, type of foods. This also created by the staff.
+	\\
+		{\bf \hspace{-20pt} Body measurements}
+		The user can find their bodymeasurements. User just capture an image then get the output.\\
+		
+			{\bf \hspace{-20pt} Nutrient content prediction}
+			The user can get the nutrient content of their food, just capture an image and get the output.\\
+
+	
+
+	{\bf \hspace{-20pt} View machines}
+	
+	The user can also view the machines, image and description of that machines. So they have small idea about the machines.
+	\\
+	{\bf \hspace{-20pt}View services}
+	
+	Public can view the available services in the fitness center like weight loss, cardio training, Strength training, steam bath, Men and women fitness, Body building, Aesthetic fitness, etc.
+	
+	{\bf \hspace{-20pt}View trainer}
+	
+	The public can view all trainers in the center that added by the admin.  They have the name of trainer their qualifications, experience, achievements Etc. So, the public can easily access the trainers’ details in the system. This is very helpful to the public to identify the trainer not go the center just use the application. 	\pagebreak
+	\\
+	{\bf \hspace{-20pt}View review}
+	
+	Public can view the review of the user, that is helpful to identify the center quality and their performance. 
+	\\
+
+	{\bf \hspace{-20pt}Enquiry creation}
+	
+	The public have an option of enquiry creation.  Enquiry creation means the public can have any details about the center then they create a message that is view to the admin or they have any doubts in the services or trainers or any other they can enquire through this, just enter their mail and send a message.
+	\\
+		{\bf \hspace{-20pt}Chat}\\
+		User and staff interact with eachother through the chat. The staff can view the chat history then chat. User can chat with their personal trainer.\\
+	\pagebreak
+	\section{Module Description}
+	\subsection{Admin}
+	
+	Admin can login into the system after entering his username and password. Admin control the overall functionalities. Admin have many functions, Staff managements, Service managements, Workhours managements, Machine managements...etc. Admin can add, update, view the all fuctions. The added services, Staffs are also view the public users. Then admin can also interact with the enquiry through the email. Then admin also view the user details and their opted services. Admin allocate personal trainers to only client’s request. Then make normal diet plan for all normal category clients. Also make the workout plans for normal category clients. Admin can also view the reviews of user.
+	\subsection{Personal trainer/Staff}
+	
+	Personal trainer can login into the system after entering his username and password. Then the personal trainer can view his profile and if he needs any update in his profile, he can perform it. Then view allocated users for their own clients. Then also schedule fixing of their own user. Staff  also create a diet plan, workout plan  for their own personal clients.
+	\pagebreak
+	\subsection{ User}
+	User register with name, age, sex, address, weight, height …etc.  User can login into the system after entering his username and password. Then the user can view his profile and if he needs any update in his profile, he can perform it. Then the user can view the services provided by the center that are added by the admin. Then the user can view the trainers’ details with their name, and other details for added by the admin. The user can also choose a personal trainer request for to the admin. View the normal diet plans added by the admin. View the normal workout plan added by the admin. Then view its own scheduling time that added by the staff. Then view their own workout plans that added by the staff. Then view the diet plans that added by the personal trainers. The main part is body measurements, just capture an image then get the measurements and also find the nutrinet content of food with the help of image capture using nutrient content prediction.   
+	
+	\subsection{ Public}
+	Public can just view the services available in the center. Then view the trainer’s details and view reviews of the users. Then create an enquiry for the admin on any center related data. This is public user they get a small idea about the center quality.
+	\pagebreak
+	\section{Feasibility Study}
+	Feasibility is a test of system according to workability, impact on organization ability to
+	meet user needs, and effective use of resources. An estimate is made whether the identified
+	user may be satisfied using current software and hardware technologies. The effective
+	from the business point of view and if it can be developed in the given existing budgetary
+	constraints. Generally, feasibility studies precede technical development and project implementation. Feasibility study produce the overall details about a project, their importance in different fields. The three essential aspects of are involved in feasibility study promotions
+	of the preliminary investigations technical, economic and operational feasibility.
+	
+	\subsection{Operational Feasibility}
+	
+	Operational feasibility examines how a project plan satisfies the requirements identified in
+	the requirements analysis phase of system development. It helps in taking advantage of
+	the opportunities and fulfils the requirements as identified during the development of the
+	project. The purpose of the operational feasibility study is to determine whether the new
+	system will be used if it is developed and implemented from users that will undermine the
+	possible application benefits. The new system or project can be used in our day to day
+	life which become more user friendly for users that they can easily access and manage the fitness center   android application which are provided to them. Admin can easily manage all activities of the fitness center. Admin can also manage his multiple tasks using his web application. This system is very useful to user to get fitness managing and most important is body measurements and nutrient content prediction. Personal trainer handles the different functionality in the fitness center. Personal trainer and user can easily interact with each other. This project can easily operate by admin, personal trainer and user because there is no need of additional training for them. This project is operationally feasible.
+	
+	
+	\pagebreak
+	\subsection{Technical Feasibility}
+	
+	Technical feasibility study deals with the hardware and software and technology which are
+	required to accomplish the user requirements in the system with in the allocated time and
+	budget. This involves questions such as whether the technology needed for the system
+	exists, how difficult it will be to build, and whether the firm has enough experience using
+	that technology. It is concerned with the existing computer system and to what extent
+	it can support the proposed system. The proposed system requires python and android
+	platform only which are open source. Due to open source of languages, it may not become
+	difficult to maintain and developing of this system. The system can also be easily upgraded
+	to the higher level with less effort and maintenance. This application is easily used with
+	their smartphone from anywhere and user friendly. Hence the proposed work is technical
+	feasible. User can easily manage their fitness and health disease by their smart phones, no need of any other heavy requirements.
+	
+	\subsection{Economic Feasibility}
+	
+	This assessment typically involves a cost/ benefits analysis of the project, helping organizations determine the viability, cost, and benefits associated with a project before financial
+	resources are allocated. In the fast-paced world today there is a great need of online social networking facilities. Thus, the benefits of this project in the current scenario make it
+	economically feasible. The purpose of the economic feasibility assessment is to determine
+	the positive economic benefits to the organization that the proposed system will provide. It
+	includes quantification and identification of all the benefits expected. Admin and personal trainer use web application for login. So, to host the site, it need cost for it. If admin or personal trainer do not have system, they need to spend some money for it. This
+	system may provide easy access in economic condition for developer as well as user. It provide very less time. It have no user training is required its userfriendly. This
+	system may provide benefit to user by they can easily manage the fitness and predict the heart disease. User can use android smartphones to manage the fitness and predict the heart disease. Any user can use this system who have smartphone with android version. So, this project is economically feasible.
+	
+	\pagebreak
+	\section{System environment} 
+	\subsection{Developer Requirement}{
+		
+		\subsubsection{2.5.1.1 Hardware requirement}{
+			\begin{itemize}
+				\item Processor : Intel Core i3 and above
+				\item  RAM : 8GB
+				\item  Storage : 500GB Hard disk
+			\end{itemize}
+		}
+		
+		
+		
+		\subsubsection{2.5.1.2 Software requirement}{
+			\begin{itemize}
+				\item  Operating system : Windows 8 or above 
+				\item  Front end : HTML, CSS , BOOTSTRAP
+				\item  Back end : Mysql
+					\item  Languages : Python, Android
+				\item  IDE : Android studio, Jetbrains Pycharm community Editor
+				\item  Web browser : Any web browser eg:Internet Explorer, Google chrome
+			\end{itemize}
+		}
+		
+		\subsection{User requirement}
+		\begin{itemize}
+			\item  An android smartphone.
+			\item  Any Desktop or laptop.
+	\end{itemize}}
+	
+	
+	
+	\pagebreak
+	\section{Actors and their Roles}
+	
+	\subsection{Admin}
+	Admin can login into the system after entering his username and password. Admin control the overall functionalities. Admin have many functions, Staff managements, Service managements, Workhours managements, Machine managements...etc. Admin can add, update, view the all fuctions. The added services, Staffs are also view the public users. Then admin can also interact with the enquiry through the email. Then admin also view the user details and their opted services. Admin allocate personal trainers to only client’s request. Then make normal diet plan for all normal category clients. Also make the workout plans for normal category clients. Admin can also view the reviews of user.
+	
+	\begin{itemize}
+		\item  Login
+		\item Services
+		\item	Staff management 
+		\item	Working hour management
+			\item Machine management
+		\item	View user and opted services
+		\item	Personal trainer allocation
+		\item   accept or reject trainer request
+		\item	View Body measuremets
+		\item	Normal diet plan creation
+		\item	Normal workout plan creation
+		\item	View reviews
+		
+		
+		
+		
+		
+	\end{itemize}
+	
+	
+	\subsection{Staff/Personal trainer}
+	Staff can login into the system after entering his username and password. Then the personal trainer can view his profile and if he needs any update in his profile, he can perform it. Then view allocated users for their own clients. Then also schedule
+	fixing of user, also create a diet plan for their own personal clients.
+	
+	\begin{itemize}
+		\item  Login
+		\item	View profile
+	
+		\item	Edit password
+		\item	View allocated user
+		\item	Schedule fixing 
+		
+		\item	Diet plan creation 
+		\item	workout plan creation  user
+			\item	Chat
+	\end{itemize}
+	
+	\subsection{User}
+	User register with name, age, sex, address, weight, height …etc.  User can login into the system after entering his username and password. Then the user can view his profile and if he needs any update in his profile, he can perform it. Then the user can view the services provided by the center that are added by the admin. Then the user can view the trainers’ details with their name, and other details for added by the admin. The user can also choose a personal trainer request for to the admin. View the normal diet plans added by the admin. View the normal workout plan added by the admin. Then view its own scheduling time that added by the personal trainer.
+	\pagebreak
+	\\
+	Then view their own workout plans that added by the personal trainer. Then view the diet plans that added by the personal trainers. The main part is body measurements and also find the nutrient content of food with the help of image capture.
+	\begin{itemize}
+		\item  Login
+		\item	Signup
+		\item	Login
+		\item	View profile
+		\item	View services
+		\item	View trainers
+			\item	View machines
+		\item	Personal trainer choosing request
+		\item	View normal diet plans
+		\item	View normal workout plans
+		\item	View scheduling 
+		\item	View workout plans 
+		\item	View diet plans
+		\item	Chat
+		\item	Body measurements
+			\item	Nutrient content prediction
+		\item  Review
+	\end{itemize}
+	
+	\pagebreak
+	\subsection{Public}
+	Public can just view the services available in the centre. Then view the trainer’s details and view reviews of the users. Then create an enquiry for the admin on any centre related data. This is public user they get a small idea about the centre quality.
+	\begin{itemize}
+		\item 	View services
+		\item	View trainers
+		\item	View reviews
+		\item	Enquiry creations
+		
+\end{itemize}	
+
+	\chapter{METHODOLOGY}
+\section{Introduction}
+\hspace*{12pt}{ Agile methodology is followed in this project. Agile software development comprises various approaches to software development under which requirements and solutions evolve through the collaborative effort of self organizing and cross-sectional teams
+	and their customers/end users. It advocates adaptive planning, evolutionary development,
+	early delivery and continuous improvement and it encourage rapid and flexible response to
+	changes. It advocates adaptive planning, evolutionary development. Early delivery
+	and continuous improvement and it encourage rapid and flexible response to change. This
+	chapter describes the operational plan of work or strategy. A number of activities in the
+	plan of work.
+	\\Scrum is a subset of Agile. It is a lightweight process framework for agile development, and the most widely-used one. Scrum significantly increases productivity and reduces time to benefits relative to classic “waterfall” processes. Scrum processes enable organizations to adjust smoothly to rapidly-changing requirements, and produce a product that meets evolving business goals. Scrum does not define just what form requirements are to take, but simply says that they are gathered into the Product Backlog, and referred to generically as Product Backlog Items.
+	\\\hspace*{12pt}
+	
+	
+	\section{Uml Diagrams}
+	\subsection{Use case Diagram}
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.7\textheight]{"UML main.png"}
+		\end{center}
+		\caption{Use case diagram}
+	\end{figure}
+	\pagebreak
+	\subsection{Activity diagrams}
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.7\textheight]{C:/Users/user/Desktop/fitness center/design/Activity.png}
+		\end{center}
+		\caption{Admin activity}
+	\end{figure}
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.7\textheight]{"C:/Users/user/Desktop/fitness center/design/personal trainer activity.png"}
+		\end{center}
+		\caption{Staff activity}
+	\end{figure}
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.7\textheight]{"user activity.png"}
+		\end{center}
+		\caption{User activity}
+	\end{figure}
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.35\linewidth, height=0.5\textheight]{"public activity.png"}
+		\end{center}
+		\caption{Public activity}
+	\end{figure}
+	\pagebreak
+	
+	\section{User Story}
+	\begin{center}
+		
+		\begin{tabular} { | p {1.0 cm} | p {3 cm} | p {4 cm} |  p {4 cm} | }
+			
+			\hline\bf \vspace*{5pt} User story ID & \bf \vspace*{5pt}As a \textless Type of Users \textgreater & \bf \vspace*{5pt} I want to  \textless Perform	some task \textgreater &\bf \vspace*{5pt} So that I can \textless Achieve
+			some goal \textgreater \\
+			
+			\hline
+			1 & Admin &	Access homepage and login &	Home page of admin access the system.\\ \hline
+			2 & Admin &	Services management &Admin can add, view the service and update, delete. \\ \hline
+			
+			
+			
+			
+			3 &Admin &	Staff management &	Admin can add, view and update staffs.\\ \hline
+			4 &Admin &	Work hours management &	Admin can manage the working time of gym.\\ \hline
+			5 & User &	Sign up and login&	User register to the system then login.\\ \hline
+			
+			6 &User &	View profile &	After login user can view and update their profile.\\ \hline
+			7 & User &	View services &	User can view the provided services\\ \hline
+			
+			8 & User &	View working hours &	User can view the working hour of gym. \\ \hline
+			
+			9 & User &	View staff &	User can view the staff details\\ \hline
+			
+				
+			10 &  User & Request for choosing personal trainer & User can request to admin they want a personal trainer.\\ \hline
+			
+			
+			
+			
+		\end{tabular} 
+		
+		\vspace*{12pt}
+	\end{center}
+	\newpage
+	\begin{center}
+		\begin{tabular} { | p {1.0 cm} | p {3 cm} | p {4 cm} |  p {4 cm} | }
+			
+			\hline\bf \vspace*{5pt} User story ID & \bf \vspace*{5pt}As a \textless Type of Users \textgreater & \bf \vspace*{5pt} I want to  \textless Perform	some task \textgreater &\bf \vspace*{5pt} So that I can \textless Achieve
+			some goal \textgreater \\
+			
+			\hline
+		
+			
+		
+				11 &   User &	Body measurements &	User upload a capture image and get their body measurements.    \\ \hline
+			12 &Admin &	View the user request for personal trainer &	Admin can view the user request for personal trainer. Then admin accept or reject the request.\\ \hline
+			
+		
+			13 & Staff & Login and view profile &staff login to the system. Then view their profile and edit. \\ \hline
+			
+			14 & Staff &
+			View allocated user &	Personal trainer can view their own allocated users.\\ \hline
+			15 & Staff &	Schedule fixing for user &	Personal trainer can make schedules to their own users .\\ \hline
+			
+			16 & Staff &	Diet plan creation & 	Personal trainer creates the diet plan for their own users.\\ \hline
+				17  & Staff	& Workout plan&	Personal trainer creates the workout plan for their own users.\\ \hline
+		\end{tabular} 
+		\vspace*{12pt}
+	\end{center}
+	\newpage
+	\begin{center}
+		\begin{tabular} { | p {1.0 cm} | p {3 cm} | p {4 cm} |  p {4 cm} | }
+			
+			\hline\bf \vspace*{5pt} User story ID & \bf \vspace*{5pt}As a \textless Type of Users \textgreater & \bf \vspace*{5pt} I want to  \textless Perform	some task \textgreater &\bf \vspace*{5pt} So that I can \textless Achieve
+			some goal \textgreater \\
+			
+			\hline
+			
+		
+				18 & User  &	View the accepted trainer request& 	The user can view the accepted request and view their schedules, diet plan, work out plan and trainer information..\\ \hline
+			
+		
+					19 &   Staff &	View body measurements &	Personal trainer staff can view the body measurements of their own clients     \\ \hline
+			20 &   Admin &	machine management &	Admin add the machine name and small descriotion about the machine and view and edit     \\ \hline
+				21 &   User &	view machines &	user view the machines    \\ \hline
+			22 &   Admin &	Normal diet plan &	Admin create diet plan for general user    \\ \hline
+			23&   User &	View diet plan &	User can view the general diet plan    \\ \hline
+				24 &  Admin &	Workout plan &	Admin create a workout plan for general user.      \\ \hline
+			25 &   User &	View workout plan &	User can view the workout plans created by admin    \\ \hline
+			
+				\end{tabular} 
+		\vspace*{12pt}
+	\end{center}
+\newpage
+\begin{center}
+\begin{tabular} { | p {1.0 cm} | p {3 cm} | p {4 cm} |  p {4 cm} | }
+
+\hline\bf \vspace*{5pt} User story ID & \bf \vspace*{5pt}As a \textless Type of Users \textgreater & \bf \vspace*{5pt} I want to  \textless Perform	some task \textgreater &\bf \vspace*{5pt} So that I can \textless Achieve
+some goal \textgreater \\
+
+\hline
+
+		
+			
+			26 &   Admin &	View user and opted services&	Admin can view the user details and their opted services    \\ \hline
+		
+		
+			
+	
+		
+			27&   User &	Nutrient content &	User can check the nutrient content of their foods.     \\ \hline
+			28 & Public &	View services &	Public can view the provided services \\ \hline
+				29 &  Public &	Enquiry creation &	Public can create an enquiry to admin     \\ \hline
+					30 &   Admin &	View enquiry &	Admin view the enquiry and also reply that    \\ \hline
+				31 & Public &	View staff &	Public can view the staff details.\\ \hline
+			32 &    user &	chat &	Chat with personal trainer   \\ \hline
+			33 &    User &	Review &	User can add the review about the fitness center   \\ \hline
+			34 &  Admin/public&	View review &	Admin and public  can view the reviews     \\ \hline
+		
+			
+			
+			
+		\end{tabular} 
+		
+		\vspace*{12pt}
+		\captionof{table}{User Story}
+	\end{center}
+	\pagebreak
+	\section{ Product Backlog}
+	
+	\begin{tabular}{ | p {1.0 cm} | p {1.8 cm} | p {1 cm} |  p {1.2 cm} |  p {2.1 cm} |  p {2.0 cm} |  p {2.6 cm} | }
+		\hline
+		\centering	\bf User Story ID &
+		\bf Priority
+		(Low,High,
+		Medium)   &
+		\bf Size &
+		\bf Sprint & 
+		\bf Status (Planned,
+		Progressed,
+		Completed) &
+		\bf Release Date & 
+		\bf Release Goal \\
+		\hline
+		1& MEDIUM & 6 & {1}&Completed & 22-02-2022 &Admin home Page\\ 
+		\cline{1-3} \cline{5-7} 
+		2& MEDIUM& 6 &                   &Completed  & 25-02-2022 &Services management\\ \cline{1-3} \cline{5-7} 
+		3& MEDIUM & 6 &                   &Completed   & 27-02-2022 &Staff management\\ \cline{1-3} \cline{5-7} 
+		4&MEDIUM  & 9 &   &Completed & 02-03-2022 &Work hours management\\ \cline{1-3} \cline{5-7}
+		5&MEDIUM & 9 &                   &Completed   & 05-03-2022 &User register to system \\ \cline{1-3} \cline{5-7}
+		
+		6& MEDIUM & 6 &	    				&Completed   & 08-03-2022 &User View profile\\ \cline{1-3} \cline{5-7}  
+		7& MEDIUM & 6 &                 &Completed  & 13-03-2022 &View services  \\ \cline{1-3} \cline{5-7} 
+		8& MEDIUM & 8 &            &Completed  & 15-03-2022 &User View working hour of gym  \\
+		\cline{1-3} \cline{5-7} 
+		
+		9&  MEDIUM  & 12 & &Completed   & 17-03-2022 & View Staff  \\ \cline{1-3} \cline{5-7}  \hline
+	\end{tabular}
+	\pagebreak
+	\begin{center}
+			\begin{tabular}{ | p {1.0 cm} | p {1.8 cm} | p {1 cm} |  p {1.2 cm} |  p {2.1 cm} |  p {2.0 cm} |  p {2.6 cm} | }
+			\hline
+			\centering	\bf User Story ID &
+			\bf Priority
+			(Low,High,
+			Medium)   &
+			\bf Size &
+			\bf Sprint & 
+			\bf Status (Planned,
+			Progressed,
+			Completed) &
+			\bf Release Date & 
+			\bf Release Goal \\
+			\hline
+			
+			10&LOW & 10 &      {2}             &Completed   & 20-03-2022 & Request for choosing personal trainer  	 \\ \cline{1-3} \cline{5-7} 
+			11&  LOW & 11 &                    &Completed & 21-03-2022 &Body measurements\\
+			\cline{1-3} \cline{5-7} 
+			12&  MEDIUM & 11 &                    &Completed & 22-03-2022 &View the user request\\
+			\cline{1-3} \cline{5-7} 
+			13&  MEDIUM  & 11 &                   &Completed  & 24-03-2022 & Login and view profile   \\ \cline{1-3} \cline{5-7}
+			
+			
+			
+			14& HIGH & 10 &                   &Completed & 26-03-2022 &View allocated user  \\ \cline{1-3} \cline{5-7}
+			
+			15& MEDIUM & 10 &                   &Completed   & 29-03-2022 & Schedule fixing of user \\ \cline{1-3} \cline{5-7}
+			\hline
+			16& HIGH & 9 &     &Completed  & 03-04-2022 & Diet plan creation     \\ \cline{1-3} \cline{5-7}
+			
+			17& MEDIUM  & 12 &      {3}                &Completed   & 06-04-2021 &Workout plan  \\ \cline{1-3} \cline{5-7}
+			18& MEDIUM & 10 &                    &Completed  & 12-04-2022 &View accepted trainer request  \\ \cline{1-3} \cline{5-7}
+			19& MEDIUM & 10 &                   &Completed   & 16-04-2022 &View bodymeasurements\\ \cline{1-3} \cline{5-7}
+			\hline
+		\end{tabular}
+	\end{center}
+	\pagebreak
+	\begin{center}
+		\begin{tabular}{ | p {1.0 cm} | p {1.8 cm} | p {1 cm} |  p {1.2 cm} |  p {2.1 cm} |  p {2.0 cm} |  p {2.6 cm} | }
+		\hline
+		\centering	\bf User Story ID &
+		\bf Priority
+		(Low,High,
+		Medium)   &
+		\bf Size &
+		\bf Sprint & 
+		\bf Status (Planned,
+		Progressed,
+		Completed) &
+		\bf Release Date & 
+		\bf Release Goal \\
+		\hline
+			
+			20& MEDIUM & 9 &&Completed  & 20-04-2022 &Machine management  \\ \cline{1-3} \cline{5-7} 
+			
+			
+			21& MEDIUM & 9 & &Completed  & 24-04-2022 &View machines \\ \cline{1-3} \cline{5-7} 
+			
+			
+			
+			
+			22& LOW & 12 &                  &Completed  & 26-04-2022 &Normal diet plan\\ \cline{1-3} \cline{5-7} 
+			
+			23& MEDIUM & 9 & &Completed  & 24-04-2022 &View diet plan \\ \cline{1-3} \cline{5-7} 
+			
+			
+			
+			
+			24& LOW & 12 &                  &Completed  & 26-04-2022 & Workout  plan  \\ \cline{1-3} \cline{5-7} 
+			
+			25& MEDIUM & 9 & &Completed  & 24-04-2022 & View  Workout plan \\ \cline{1-3} \cline{5-7} 
+				\hline
+			26& MEDIUM & 9 &  {4} &Completed  & 24-04-2022 & View user and opted services \\ \cline{1-3} \cline{5-7} 
+		
+			27& MEDIUM & 9 & &Completed  & 24-04-2022 &Nutrient content prediction \\ \cline{1-3} \cline{5-7} 
+			
+			28& MEDIUM & 9 & &Completed  & 24-04-2022 & View services \\ \cline{1-3} \cline{5-7} \hline
+		\end{tabular}
+	\end{center}
+\pagebreak
+	\begin{center}
+			\begin{tabular}{ | p {1.0 cm} | p {1.8 cm} | p {1 cm} |  p {1.2 cm} |  p {2.1 cm} |  p {2.0 cm} |  p {2.6 cm} | }
+			\hline
+			\centering	\bf User Story ID &
+			\bf Priority
+			(Low,High,
+			Medium)   &
+			\bf Size &
+			\bf Sprint & 
+			\bf Status (Planned,
+			Progressed,
+			Completed) &
+			\bf Release Date & 
+			\bf Release Goal \\
+			\hline
+			
+			
+			29& MEDIUM & 9 & &Completed  & 24-04-2022 & Enquiry creation\\ \cline{1-3} \cline{5-7} 
+			
+			30& HIGH & 9 & &Completed  & 24-04-2022 &View enquiry \\ \cline{1-3} \cline{5-7} 
+			
+			31& MEDIUM & 9 & &Completed  & 24-04-2022 &View staff\\ \cline{1-3} \cline{5-7} 
+			
+			32& MEDIUM & 9 & &Completed  & 24-04-2022 &Chat with user and staff \\ \cline{1-3} \cline{5-7} 
+			
+			33& MEDIUM & 9 & &Completed  & 24-04-2022 & Review \\ \cline{1-3} \cline{5-7} 
+			
+			34& MEDIUM & 9 & &Completed  & 24-04-2022 & View Review \\ \cline{1-3} \cline{5-7} 
+			
+		
+			
+			\hline
+			                        
+		\end{tabular}
+	\end{center}
+	\vspace*{12pt}
+	\captionof{table}{Product backlog}
+	\pagebreak
+	
+	
+	\section{Project plan}
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {2 cm} | p {2 cm} |  p {2 cm} | p {1.5 cm} | p {3 cm} |  }
+			
+			\hline
+			User story ID & Task name & Start date & End date & Days & Status
+			Goal\\
+			\hline
+			1 & Homepage and login & 21/02/2022 & 22/02/2022 & 1 & Completed\\ \hline
+			2 & Services management & 22/02/2022& 23/02/2022& 1 &  Completed\\ \hline
+			3 & Staff management & 23/02/2022 & 24/02/2022 & 1 &  Completed\\ \hline
+			4 & Work hour management & 24/02/2022& 25/02/2022 & 1 & Completed\\ \hline
+			5 & Signup and login & 25/02/2022 & 26/02/2022 & 1 &  Completed\\ \hline
+			6 & View profile & 26/02/2022 & 27/02/2022 & 1 &  Completed\\ \hline
+			7 & View services &27/02/2022 & 28/02/2022 & 1 &  Completed\\ \hline
+			8 & View working hours &01/03/2022& 03/03/2022 & 2 &  Completed\\ \hline
+			9 & View staff &  03/03/2022 &  05/03/2022 & 2 &  Completed\\ \hline
+			10 & Request for choosing personal trainer &08/03/2022  &09/03/2022  & 1  &  Completed \\ \hline
+			11& Body measurement &09/03/2022 & 10/03/2022 &  1 &   Completed\\ \hline
+		
+			
+				\end{tabular}
+		\end{center}
+	\pagebreak
+	\begin{center}
+\begin{tabular} { | p {1 cm} | p {2 cm} | p {2 cm} |  p {2 cm} | p {1.5 cm} | p {3 cm} |  }
+
+\hline
+User story ID & Task name & Start date & End date & Days & Status
+Goal\\
+\hline      	12& View request of personal trainer &10/03/2022  & 11/03/2022   & 1  &   Completed \\ \hline
+13& Login and View profile &11/03/2022  & 12/03/2022  & 1 &  Completed \\ \hline
+			14& View allocated user &12/03/2022  &13/03/2022  &1  &  Completed\\ \hline
+			15& Schedule fixing of user &13/03/2022  &14/03/2022 &1  &   Completed\\ \hline
+			
+				
+	
+			16& Diet plan creation & 14/03/2022&16/03/2022 & 2 &  Completed\\ \hline
+			17& Workout plan& 16/03/2022 &18/03/2022  &2  &   Completed\\ \hline
+			18& View accepted trainer request & 18/03/2022  & 20/03/2022   &2  &  Completed \\ \hline
+			19& View body measurement & 26/03/2022 & 27/03/2022 & 1 &   Completed\\ \hline
+			20& Machine management &27/03/2022  & 29/03/2022 & 2  & Completed\\ \hline
+		
+				\end{tabular}
+		\end{center}
+	\pagebreak
+	\begin{center}
+\begin{tabular} { | p {1 cm} | p {2 cm} | p {2 cm} |  p {2 cm} | p {1.5 cm} | p {3 cm} |  }
+
+\hline
+User story ID & Task name & Start date & End date & Days & Status
+Goal\\
+\hline
+
+
+           	21 & View machines  & 29/03/2022 & 30/03/2022 & 1 &  Completed\\ \hline
+           22 & Normal diet plan &30/03/2022  &31/03/2022  & 1 &  Completed\\ \hline
+           
+           23 & View diet plan &31/03/2022   &02/04/2022  & 2 & Completed \\ \hline
+   			24 & Workout plan & 02/04/2022 & 04/04/2022 & 2 &   Completed\\ \hline
+			25 & View Workout plan &  04/04/2022 &  05/04/2022 &1  &  Completed\\ \hline
+			26 & View  user and opted services & 05/04/2022  &  07/04/2022 &2  &   Completed \\ \hline
+			27 & Nutrient content prediction& 12/04/2022 & 14/04/2022 &2  &   Completed\\ \hline
+			28 & View services &14/04/2022 &  16/04/2022& 2 &   Completed\\ \hline
+			29 & Enquiry creation &16/04/2022 &18/04/2022  &2  &   Completed\\ \hline
+			30 &View enquiry & 18/04/2022 &20/04/2022  &2  & Completed\\ \hline
+		
+				\end{tabular}
+		\end{center}
+	\pagebreak
+	\begin{center}
+\begin{tabular} { | p {1 cm} | p {2 cm} | p {2 cm} |  p {2 cm} | p {1.5 cm} | p {3 cm} |  }
+
+\hline
+User story ID & Task name & Start date & End date & Days & Status
+Goal\\
+\hline
+           	31& View Staff &20/04/2022  &22/04/2022 & 2 &   Completed\\ \hline
+           32& Chat &22/04/2022 &23/04/2022  &1  & Completed \\ \hline
+			33&Review &23/04/2022   &24/04/2022  &1  &   Completed\\ \hline
+			34& View review &24/04/2022 &25/04/2022  &1  & Completed \\ \hline
+		
+			
+			
+			
+			
+		\end{tabular}
+		\vspace*{12pt}
+		\\{\bf Table 3.1 Project plan}
+	\end{center}
+	
+	\pagebreak	
+	
+	\section{Sprint Review}
+	\subsection {Sprint 1}
+	\begin{center}
+		\begin{table}[ht]
+			\begin{tabular}{ | p {1.5 cm} | p {5.5 cm} | p {6.0 cm} |   }
+				
+				\hline 
+				\bf 	User story ID & \bf Comments from scrum master, if any & \bf Comments from product owner, if any \\
+				\hline
+				1 & Satisfied & Satisfied\\ \hline
+				2 & Add an heading and image & Add an heading and image \\ \hline
+				3 & improve design  & improve design  \\ \hline
+				4 & Satisfied  & Satisfied  \\ \hline
+				5 & Satisfied & Improve design  \\ \hline
+				6 & Satisfied & Satisfied\\ \hline
+				7 & Add an heading   & Add an heading \\ \hline
+				8 & Add an heading and validation & Add an heading and validation \\ \hline
+				9 & Add an heading and validation & Add an heading and validation \\ \hline
+				
+				
+			\end{tabular}
+			\caption{ Sprint 1 (Review)}
+		\end{table}
+	\end{center}
+	\pagebreak
+	\subsection {Sprint 2}
+	\begin{center}
+		\begin{table}[ht]
+			\begin{tabular}{ | p {1.5 cm} | p {5.5 cm} | p {6.0 cm} |   }
+				
+				\hline 
+				\bf 	User story ID & \bf Comments from scrum master, if any & \bf Comments from product owner, if any \\
+				\hline
+			
+				10 & Add services to the design & Add services to the design  \\ \hline
+				11 & Check currectly & Check currectly\\ \hline
+				12 & Satisfied & Satisfied \\ \hline
+				13 &Satisfied  & Satisfied  \\ \hline
+				14 & Validation  & Validation \\ \hline
+				15 & Satisfied & Satisfied  \\ \hline
+				16 & Validation & Validation\\ \hline
+					17 & Add videos of workout plan  & Add videos of workout plan  \\ \hline
+				18 & Validation and View added workout plan & Validation  \\ \hline
+			\end{tabular}
+			\caption{ Sprint 2 (Review)}
+		\end{table}
+	\end{center}
+	\pagebreak
+	\subsection {Sprint 3}
+	\begin{center}
+		\begin{table}[ht]
+			\begin{tabular}{ | p {1.5 cm} | p {5.5 cm} | p {6.0 cm} |   }
+				
+				\hline 
+				\bf 	User story ID & \bf Comments from scrum master, if any & \bf Comments from product owner, if any \\
+				\hline
+			
+				19 & Satisfied  & Satisfied \\ \hline
+				20 & Satisfied & Satisfied  \\ \hline
+				21 & Satisfied & Satisfied\\ \hline
+				22 & Change design  & Change design \\ \hline
+				23 & Satisfied  & Satisfied  \\ \hline
+				24 & Add videos of workout plan & Add videos of workout plan \\ \hline
+				25 & Satisfied  & Satisfied  \\ \hline
+				26 & Add videos of workout plan & Add videos of workout plan \\ \hline
+			\end{tabular}
+			\caption{ Sprint 3 (Review)}
+		\end{table}
+	\end{center}
+	\pagebreak
+	\subsection {Sprint 4}
+	\begin{center}
+		\begin{table}[ht]
+			\begin{tabular}{ | p {1.5 cm} | p {5.5 cm} | p {6.0 cm} |   }
+				
+				\hline 
+				\bf 	User story ID & \bf Comments from scrum master, if any & \bf Comments from product owner, if any \\
+				\hline
+				27 & Check currectly &Check currectly   \\ \hline
+				28 & Satisfied & Satisfied\\ \hline
+				28 &   Satisfied &Satisfied \\ \hline
+				29 &Satisfied  & Satisfied \\ \hline
+				30 & Filter by date  & Filter by date \\ \hline
+				31 & Satisfied & Satisfied  \\ \hline
+				32 &Satisfied & Satisfied \\
+				33 & Satisfied & Satisfied  \\ \hline
+				34 & Satisfied & Satisfied\\ \hline
+				
+			\end{tabular}
+			\caption{ Sprint 4 (Review)}
+		\end{table}
+	\end{center}
+	\pagebreak
+	
+	\section{DATABASE DESIGN}	
+	\subsection{login}
+	\paragraph{}{This is login table. This include user name, user type and password for login to this application. Admin, user,staff  enter to their homepage by entering username and password and access his/her account.}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			1 & login\_id & INT & PRIMARY KEY &  Login id of user\\ \hline
+			2 & username & VARCHAR(15) & NOT NULL &  Name of user\\ \hline
+			3 & password & VARCHAR(20) & NOT NULL & Password of user\\ \hline
+			4 & usertype & VARCHAR(6) & NOT NULL & Type of user\\ \hline
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Login table}
+	\end{center}
+	
+	\subsection{service}
+	\paragraph{}{This is service table. This include servic name, description of a service. This table include avilable services in the center.}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			1 & ser\_id & INT & PRIMARY KEY &  service id of service\\ \hline
+			2 & servicename & VARCHAR(20) & NOT NULL &  Name of staff\\ \hline
+			3 & description & VARCHAR(100) & NOT NULL & description of service\\ \hline
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Service table}
+	\end{center}
+	\pagebreak
+	\subsection{staff}
+	\paragraph{}{This is staff  table. When admin can add a staff that are store into the table. This include staff\_id, name,photo, place, post, pin, qualification, experience,gender, email, achievements, phone\_no and login\_id. Here login\_id is foreign key which is fetched from login table.}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			1 & staff\_id & INT & PRIMARY KEY &  staff id  of staff\\ \hline
+			2 & login\_id & INT & FOREIGN KEY & login  id  of staff who is register\\ \hline
+			3 & name & VARCHAR(20) & NOT NULL &  name of staff who is register\\ \hline
+			4 & image & VARCHAR(200) & NOT NULL & image of user who is register\\ \hline
+			5& place & VARCHAR(20) & NOT NULL & place of staff who is register\\ \hline
+			6& pin & VARCHAR(7) & NOT NULL & pin of staff who is register\\ \hline
+			
+			
+			7 & post & VARCHAR(20) & NOT NULL & post of staff who is register\\ \hline
+						8 & email & VARCHAR(40) & NOT NULL & email of staff who is register\\ \hline
+			9 & gender & VARCHAR(8) & NOT NULL & gender of staff who is register\\ \hline
+			10 & qualification & VARCHAR(100) &NOT NULL  & qualification of staff who is register\\ \hline
+				\end{tabular} 
+			\end{center}
+			\pagebreak
+		\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+		
+			11 & experience & VARCHAR(100) &  & experience of staff who is register\\ \hline
+			
+			12 & achievements & VARCHAR(100) &  & achievements of staff who is register\\ \hline
+			13 & phno & VARCHAR(10) & NOT NULL & phone number of staff who is register\\ \hline
+			
+		\end{tabular} 
+		
+		
+		
+		
+		\vspace*{12pt}
+		\captionof{table}{Staff table}
+	\end{center}
+	\pagebreak
+	\subsection{work\_hours}
+	\paragraph{}{This is workhour table. This include wrkhrs\_id is a primary key and day of week then time. This table show the working hours details of the gym.}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			1 & wrkhrs\_id & INT & PRIMARY KEY &  workhour id  of a the center\\ \hline
+			2 & day & VARCHAR(12)& NOT NULL & working days of week \\ \hline
+			3 & Time & VARCHAR(15) &NOT NULL  &  time of center that is morning or evening\\ \hline
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Workhour table}
+	\end{center}
+	\pagebreak
+	\subsection{user}
+	\paragraph{}{This is user table. This include uid is a primary key, name, place, post, pin, gender, emailid, height,weight, phno,heart conditions,login\_id is foreign key fetched from login table. In this table we get user details.}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			
+			1 & uid & INT &PRIMARY KEY & user id  of user which is register\\ \hline
+			2 & name & VARCHAR(30) & NOT NULL &  name of user\\ \hline
+			3 & place & VARCHAR(60) &NOT  NULL & place of user \\ \hline
+			4 & post & VARCHAR(15) & NOT NULL & post of user \\ \hline
+			5 & pin & VARCHAR(8) & NOT NULL &  pin number of user\\ \hline
+			6 & gender & VARCHAR(10) & NOT NULL & gender of user \\ \hline
+			
+			
+			7 & emailid & VARCHAR(40) & NOT NULL & email id of user\\ \hline
+			
+			8 & height & INT &NOT NULL & height of user\\ \hline
+			9& weight & INT & NOT NULL & weight of user\\ \hline
+			10 &phno  & VARCHAR(10) & NOT NULL & phone number of user\\ \hline
+			
+			11&heartcondition  & VARCHAR(60) & NOT NULL & heart condition of user\\ \hline
+			12 &login\_id  & INT &FOREIGN KEY  & login id of user\\ \hline
+			
+			
+		\end{tabular} 
+	   \vspace*{12pt}
+		\captionof{table}{User table}
+	\end{center}
+	\pagebreak
+
+	\subsection{trainer\_allocation}
+	\paragraph{}
+	{This is trainer allocation table.In this table given the allocation details of user and staff. This include alloc\_id, uid, staff\_id, request, date,ser\_id. Here uid and staff\_id and ser\_id are foreign key which is fetched from user, staff, service tables.}
+
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			
+			1 & alloc\_id & INT &PRIMARY KEY & allocation  id  of personal trainer\\ \hline
+			2 & staff\_id & INT & FOREIGN KEY &  staff id  of staff which is register\\ \hline
+			3 & request & VARCHAR(70) &  & requset of users they have a personal trainer.\\ \hline
+			4 & uid & INT & FOREIGH KEY & userid of user.\\ \hline
+			5 & date & DATE &  & date of request.\\ \hline
+			6 & ser\_id & INT & FOREIGN KEY & service id of services, which service is choosed by user.\\ \hline
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Trainer allocation table}
+	\end{center}
+
+	\pagebreak
+	
+	\subsection{dietplan\_general}
+\paragraph{}
+	{This is diet plan table for general user. In this table given the diet plan details of users its created by admin. This include dplan\_id, diet\_name, morning, noon, night, inbetween.}
+\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			
+			1 & dplan\_id & INT &PRIMARY KEY & diet plan id diets\\ \hline
+			2 & diet\_name & VARCHAR(60) &NOT NULL & diet name \\ \hline
+			3 & morning & VARCHAR(100) & NOT NULL & which food is eat to morning .\\ \hline
+			4 & noon& VARCHAR(100) & NOT NULL & which food is eat noon.\\ \hline
+			5 & night & VARCHAR(100) & NOT NULL & which food is eat to night.\\ \hline
+			6 & inbetween & VARCHAR(100)& NOT NULL & which food is eat to in between times.\\ \hline
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Diet plan general table}
+	\end{center}
+	\pagebreak
+	\subsection{workoutplan\_genral}
+	\paragraph{}{This is work out plan table for general users. This table given the workout plan details of users its created by admin.  This include wrkplan\_id, time, workout name,workouts, no of times.}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			
+			1 & wrkplan\_id & INT &PRIMARY KEY & work plan id of the work plan\\ \hline
+			2 & time & VARCHAR(20) &NOT NULL  &time of workout morning or evening\\ \hline
+			3 & workout\_name & VARCHAR(50) & NOT NULL & name of workouts.\\ \hline
+			4 & workouts& VARCHAR(100) &NOT NULL  & which workouts are done and a description of workouts.\\ \hline
+			5 & nooftimes & VARCHAR(20) & NOT NULL & how many times theworkouts are done.\\ \hline
+			
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Workout plan general table}
+	\end{center}
+	
+	\pagebreak
+	\subsection{review}
+	\paragraph{}{This is a review table. Review table gives the reviews and user details. This include review\_id, review, uid, time. uid is foreign key which is fetched from user table.}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			
+			1 & review\_id & INT &PRIMARY KEY & review id of review\\ \hline
+			2 & review & VARCHAR(100) &  &review of users\\ \hline
+			3 & uid & INT &  FOREIGN KEY& user id of user .\\ \hline
+			4 & Date&  date&  & date of review .\\ \hline
+				5 & Rating& varchar(7) &  & rating of app .\\ \hline
+			
+			
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Review table}
+	\end{center}
+	\subsection{machines}
+	\paragraph{}{This is a machines table. Machine tables gives the machines deatilas with images. This include mid,name,description,photo of machines.}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			
+			1 & mid & INT &PRIMARY KEY & machines id\\ \hline
+			2 & name & VARCHAR(20) & NOT NULL & name of machines\\ \hline
+			3 & description & VARCHAR(90) & NOT NULL  & description of machines .\\ \hline
+			4 & photo& VARCHAR(150) & NOT NULL  & photo of machines .\\ \hline
+			
+			
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Machines table}
+	\end{center}
+	
+	\pagebreak
+	\subsection{schedule\_of\_ptuser}
+	 \hspace*{12pt}
+	This is a schedule table for the personal trainer's users. This table gives  schedules of user that set by the staff. This include sid, uid, time, date.
+	
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			
+			1 & sid & INT &PRIMARY KEY & schedule id\\ \hline
+			2 & uid & INT &FOREIGN KEY & user id\\ \hline
+			3 & time & TIME & NOT NULL & time of schedule.\\ \hline
+			4 & date& DATE & NOT NULL & date of schedule.\\ \hline
+			
+			
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Schedule of PT user table}
+	\end{center}
+	\subsection{enquiry}
+	\paragraph{}{This is a enquiry table for the public. The public have any information about the gym center then they make an enquiry to admin, then admin reply the enquiry. This include enq\_id, name, emailid, enquiry, date.}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			
+			1 & enq\_id & INT &PRIMARY KEY & schedule id\\ \hline
+			2 & name & VARCHAR(30) & & name of public\\ \hline
+			3 & emailid & VARCHAR(30) & NOT NULL &email id of public.\\ \hline
+			4 & enquiry & VARCHAR(100) &  &enquiry of public.\\ \hline
+			
+			5 & date& DATE &  & date of enquiry.\\ \hline
+			
+			
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Enquiry}
+	\end{center}
+	\pagebreak
+	\subsection{workoutplan\_pt}
+	\paragraph{}{This is work out plan table for personal trainer's user. This table shows the workout plan created by staff for their own user. This include wrkplan\_id from workout genral table, uid, staff\_id, time,workoutid.}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			
+			1 & wrkplan\_id & INT &FOREIGN KEY & work plan id of the work plan\\ \hline
+			2& uid & INT &FOREIGN KEY & user id \\ \hline
+			3 & staff\_id & INT & FOREIGN KEY & staff id \\ \hline
+			4 & time & VARCHAR(20) & NOT NULL &time of workout morning or evening\\ \hline
+		   	5 & w\_id & INT &PRIMARY KEY & work plan id of the work plan\\ \hline
+			
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Workout plan table}
+	\end{center}
+	
+	\pagebreak
+	\subsection{dietplan\_pt }
+	\paragraph{}{This is diet plan table for personaltrainer's user.The table show the diet plan for user that created by staff. This include dplan\_id, uid, staff\_id,  d\_id from diet plan general table, notes}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			
+			1 & d\_id & INT &PRIMARY KEY & diet plan id diets\\ \hline
+			2 & uid & INT &FOREIGN KEY & user id of user\\ \hline
+			3& staff\_id & INT &FOREIGN KEY & staff id  of staff\\ \hline
+			4 & dplan\_id & INT&FOREIGN KEY & diet name \\ \hline
+		
+			9& comments & VARCHAR(50) && staff give any notes\\ \hline
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Diet plan general}
+	\end{center}
+	\pagebreak
+	\subsection{chat}
+	\paragraph{}{This is a chat table for the user and staff. This include chat\_id, from\_id, to\_id, msg,date.}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			
+			1 & chat\_id & INT &PRIMARY KEY & schedule id\\ \hline
+			2 & from\_id & INT &NOT NULL & from id of message.\\ \hline
+			3 & to\_id & INT & NOT NULL & to id of message .\\ \hline
+			4 & msg & VARCHAR(50) & NOT NULL  &content of message .\\ \hline
+			
+			5 & date& DATE &  & date of message .\\ \hline
+			
+			
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Chat}
+	\end{center}
+	\pagebreak
+	\subsection{bodymeasurements}
+	\paragraph{}{This is a body measurement table.The table shows the body measurements of user. This include mid, uid, measurements.}
+	\\
+	\begin{center}
+		\begin{tabular} { | p {1 cm} | p {3 cm} | p {3 cm} |  p {3 cm} |  p {3 cm} | }
+			
+			\hline
+			\centering
+			\bf No. & \bf Name & \bf Type & \bf Constraints & \bf Description \\
+			\hline
+			
+			1 & mid & INT &PRIMARY KEY & mesurement id\\ \hline
+			2 & uid & INT &FOREIGN KEY & user id .\\ \hline
+			3 & shoulder & VARCHAR(40) & NOT NULL & shoulder size\\ \hline
+            	4 & shoulder to elbow & VARCHAR(40) & NOT NULL & shoulder to elbow size \\ \hline
+            		5 & elbow to hand & VARCHAR(40) & NOT NULL & elbow to hand size. \\ \hline
+            			6 & left shoulder to elbow & VARCHAR(40) & NOT NULL & left shoulder to elbow size.\\ \hline
+            				7 & left elbow  to hand & VARCHAR(40) & NOT NULL & left elbow  to hand size\\ \hline
+            					8 & waist to knee & VARCHAR(40) & NOT NULL & body  waist to knee size\\ \hline
+            						9 & knee to foot & VARCHAR(40) & NOT NULL &knee to foot size.\\ \hline
+            							10 & left waist to knee & VARCHAR(40) & NOT NULL & left waist to knee size\\ \hline
+            								11 & left knee to foot & VARCHAR(40) & NOT NULL & left knee to foot size\\ \hline
+            											
+			
+			
+			
+			
+			
+		\end{tabular} 
+		\vspace*{12pt}
+		\captionof{table}{Body measurements}
+	\end{center}
+	
+	\pagebreak
+	
+	\section{FORM DESIGN}
+	\subsection{Home page}
+\hspace*{12pt}
+	This is a home page of admin. By clickong login ,then login to the system.
+	\begin{center}
+		\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/fitness center/design/landing page.png"}
+	\end{center}
+	\pagebreak
+	\subsection{Login}
+	 \hspace*{12pt} Through login page, Admin login to the web application. By entering username and password. 
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.45\textheight]{"login.PNG"}
+		\end{center}
+		\caption{Login}
+	\end{figure}
+	\pagebreak	
+	\subsection{Menu}
+	\hspace*{12pt} The menu option of admin are staff management that add view and edit staff, then service management, diet plan creation, workout plan creation, view user details, view reviews, view enquiry and respond.
+	\begin{figure}[bph] 
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.45\textheight]{C:/Users/user/Desktop/fitness center/design/homepage.png}
+			
+		\end{center}
+		\caption{Menu}
+	\end{figure}
+	\pagebreak	
+	
+
+
+
+
+	\subsection{Add services}
+	 \hspace*{12pt} Admin can add services with service name and description. This services are view by user and public.
+	\begin{figure}[bph] 
+	\begin{center}
+		\includegraphics[width=0.8\linewidth, height=0.45\textheight]{"C:/Users/user/Desktop/fitness center/design/add services.png"}
+	\end{center}
+	\caption{Add services}
+\end{figure}
+\pagebreak
+	\subsection{View services}
+	 \hspace*{12pt} Admin can view services and make any changes  or delete. When delete click delete, make any changes to click edit.
+	\begin{figure}[bph] 
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.45\textheight]{"view and edit services"}
+		\end{center}
+		\caption{View services}
+	\end{figure}
+	\pagebreak
+	\subsection{Add Staff}
+	 \hspace*{12pt} Admin can add staff with their details name, photo, address, qualification, gender, experience, email,phone number, achievements and description.
+	\begin{figure}[bph] 
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.45\textheight]{"add staff"}
+		\end{center}
+		\caption{Add staff}
+	\end{figure}
+	\pagebreak
+	\subsection{View staff}
+	 \hspace*{12pt} Admin can view staff details and make changes and also delete and assign users to the staffs.
+	\begin{figure}[bph] 
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.45\textheight]{"view staff"}
+		\end{center}
+		\caption{View staff}
+	\end{figure}
+	\pagebreak
+	\subsection{Assign user}
+	 \hspace*{12pt} Admin  assign user to staffs just tick the check box.
+	\begin{figure}[bph]
+		\begin{center}
+			
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"assign user"}
+		\end{center}
+		\caption{Assign user}
+	\end{figure}
+	
+	\subsection{View personal trianer allocation request}
+	 \hspace*{12pt} Admin can view user's request for they have a personal trainer.Then the user allocate or reject the request.
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"view pt allocation request"}
+		\end{center}
+		\caption{View personal trainer allocation request}
+	\end{figure}
+	\pagebreak
+	\subsection{Normal diet plan}
+	 \hspace*{12pt} Admin can generate diet plan for general users. With diet name, timing of foods morning, evening, night, inbetween. 
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"normal diet plan"}
+		\end{center}
+		\caption{Normal diet plan}
+	\end{figure}
+	
+	\subsection{View user and opted services}
+	 \hspace*{12pt} Admin can view user and their opted services. To search with name or category (general or personal trainer).
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"view user and opted services"}
+		\end{center}
+		\caption{View user and opted services}
+	\end{figure}
+	\pagebreak
+	\subsection{Normal workout plan}
+	 \hspace*{12pt} Admin can generate workout  plan for general users. With workout name, description, no.of.times.
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"workout plan"}
+		\end{center}
+		\caption{Normal workout plan}
+	\end{figure}
+	
+	\subsection{View work out plan}
+	 \hspace*{12pt} Admin can view the entered work out plan and make any changes.
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"view workoutplan"}
+		\end{center}
+		\caption{View work out plan}
+	\end{figure}
+	
+	\pagebreak
+	
+	\subsection{View review}
+	 \hspace*{12pt} Admin can view the reviews entered by user.With user info, review, date.
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"view review"}
+		\end{center}
+		\caption{View review}
+	\end{figure}
+	
+	\subsection{View requiry}
+	 \hspace*{12pt} Admin can view the enquiry. It have date, enquiry, public name, emailid. Then admin can reply the enquiry.
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"view enquiry"}
+		\end{center}
+		\caption{View enquiry}
+	\end{figure}
+	
+	\pagebreak
+	\subsection{View profile}
+	 \hspace*{12pt} staff can view their profile that added by the admin at the time of registration time and edit it.
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"view profile pt"}
+		\end{center}
+		\caption{View profile}
+	\end{figure}
+	
+	\subsection{View allocated user}
+	 \hspace*{12pt} staff can view their allocated user and set diet plan, workoutplan and also view the body measurements.
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"view allocated user"}
+		\end{center}
+		\caption{View allocated user}
+	\end{figure}
+	
+	\pagebreak
+	\subsection{Set diet plan}
+ \hspace*{12pt} staff set diet plan for their own users with diet name, eating foods in different times.
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/diet plan.png"}
+		\end{center}
+		\caption{Set diet plan}
+	\end{figure}
+	
+	\subsection{Set workout plan}
+ \hspace*{12pt} staff set workout plan for their own users with workout name and no.of.workouts.
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/workout plan pt .png"}
+		\end{center}
+		\caption{Set workout plan}
+	\end{figure}		
+	\pagebreak	
+	\subsection{Schedule fixing of user}
+	 \hspace*{12pt} staff set a schedule for their own clients with username, time, start date and end date .
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"C:/Users/user/Desktop/fitness center/design/schedule fixing of pt.png"}
+		\end{center}
+		\caption{Schedule fixing of user}
+	\end{figure}
+	\subsection{View Schedule}
+	 \hspace*{12pt} staff view the schedule and also edit or delete .
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"C:/Users/user/Desktop/fitness center/design/view schedules.png"}
+		\end{center}
+		\caption{View schedules}
+	\end{figure}			
+	\pagebreak		
+	\subsection{View service }
+	 \hspace*{12pt} public can view the provided services in the gym center.
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"C:/Users/user/Desktop/fitness center/design/public view services .png"}
+		\end{center}
+		\caption{View service}
+	\end{figure}
+	\subsection{View staff}
+	 \hspace*{12pt} public can view the staffs details in the gym center, with their name, qoalification,email id ,phone no..etc
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"C:/Users/user/Desktop/fitness center/design/public view trainer.png"}
+		\end{center}
+		\caption{View staff}
+	\end{figure}			
+	\pagebreak	
+	
+	\subsection{View review }
+	 \hspace*{12pt} public can view the reviews of the center.
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"C:/Users/user/Desktop/fitness center/design/public view review.png"}
+		\end{center}
+		\caption{View review}
+	\end{figure}
+	\subsection{Enquiry}
+	 \hspace*{12pt} public create enquiry to admin with their name, emailid and enquiry.
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.25\textheight]{"C:/Users/user/Desktop/fitness center/design/public enquiry.png"}
+		\end{center}
+		\caption{Enquiry}
+	\end{figure}	
+	\pagebreak		
+	
+	\subsection{Signup , Login}
+
+	
+	\begin{figure}[!ht]
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=.9\linewidth, height=0.55\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user login.png"}
+			\caption{Login}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.9\linewidth, height=0.55\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user reg.png"}
+			\caption{ Signup}
+		\end{minipage}
+	\end{figure}
+	 \hspace*{12pt}Figure 3.30 is the login page for user. This login form consist of username and password. Existing users can enter these two details then click the login button to access the system. New users can facility to signup with their details. Figure 3.31 shows the signup page for users. Through this signup page new users can create an account to the application by inserting their few details
+	\pagebreak
+	\subsection{Homepage, Profile}
+	
+	\begin{figure}[!ht]
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user homepage.png"}
+			\caption{Homepage}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/fitness center/design/user view profile.png"}
+			\caption{ View profile}
+		\end{minipage}
+	\end{figure}
+	 \hspace*{12pt}Figure 3.32 is the  homepage of user. This drawer of user describes which are activities they can do. View profile, view services, view staff, view accepted trianer request, view machies, add reviews, view schedules ...are various functions of a user. Figure 3.33 shows the profile page for user. Here users can view their profile and also facility edit if want.
+	\pagebreak
+	\subsection{View services, View staff}
+	
+	\begin{figure}[!ht]
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user view services.png"}
+			\caption{View services}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user view trainer.png"}
+			\caption{ View staff}
+		\end{minipage}
+	\end{figure}
+	 \hspace*{12pt}Figure 3.34 shows the user can view the avilable services in the center with the service name, description. fig 3.35 shows the user can view the staff deatils and also chat with them and make a request for personal trainer that is get to click the view more.
+	\pagebreak
+	\subsection{View more and view diet plan}
+	
+	\begin{figure}[!ht]
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/fitness center/design/user view more.png"}
+			\caption{View more}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user view normal dietplan.png"}
+			\caption{ Normal diet plan}
+		\end{minipage}
+	\end{figure}
+	 \hspace*{12pt}Figure 3.36 shows the staff full details with a request button for personal trainer. fig 3.37 shows the normal diet plan for general users.
+	\pagebreak
+	\subsection{ View normal workout plan , view machines}
+	
+	\begin{figure}[!ht]
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user view normal workout plan.png"}
+			\caption{View normal workout plan}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user view machines.png"}
+			\caption{ View machines}
+		\end{minipage}
+	\end{figure}
+	
+	
+	 \hspace*{12pt}Figure 3.38 shows a form of normal work out plan for general users. They have workouts and no of times. fig 3.39 shows the machines details, this have machine name and a small description about its and have an image.
+	\pagebreak
+	\subsection{View diet plan, View accepted trainer request}
+	
+	\begin{figure}[!ht]
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user view diet plan.png"}
+			\caption{View diet plan}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user view accepted trainer requst.png"}
+			\caption{ View trainer accept request}
+		\end{minipage}
+	\end{figure}
+	
+	 \hspace*{12pt}Figure 3.40 is form of view diet plan its is creted  by personal trainers it have diet name and eating time of foods. In fig 3.41 shows accepted requst for personal trainer, So it have the user schedules, workouts, diet and chat.
+	
+	\pagebreak
+	\subsection{Review, view schedules}
+	
+	\begin{figure}[!ht]
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user review.png"}
+			\caption{Review}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=0.8\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user view schedule.png"}
+			\caption{ View schedule}
+		\end{minipage}
+	\end{figure}
+	
+	 \hspace*{12pt}Figure 3.42 shows a form the user can write a review about the center. Fig 3.43 shows user can view their schedule with time and date.
+	\pagebreak
+	
+	
+	
+	\subsection{ Body measurements }
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.28\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user body measurements.png"}
+		\end{center}
+		\caption{Body measurements}
+	\end{figure}
+	 \hspace*{12pt}Figure 3.44 is the form of user body measurements. In this first we capture a image for user and upload it then we get the measurements.
+	
+	
+	\subsection{ Nutrient content prediction }
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.8\linewidth, height=0.28\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user nutrient content.png"}
+		\end{center}
+		\caption{Nutrient content prediction}
+	\end{figure}
+	\hspace*{12pt}Figure 3.45 is user capture a image of food then predict the nutrient contents from the food and also get the food name.
+	
+	\pagebreak	
+	
+	
+	
+	
+	\subsection{Chat}
+	\begin{figure}[bph]
+		\begin{center}
+			\includegraphics[width=0.4\linewidth, height=0.5\textheight]{"C:/Users/user/Desktop/project/fitness center (4) 25222/fitness center/design/user chat.png"}
+		\end{center}
+		\caption{Chat}
+	\end{figure}
+	 \hspace*{12pt} this form user chat with personal trainer with any doubts or schedules issues.
+	\pagebreak
+	
+	
+	
+	\chapter{TESTING AND IMPLEMENTATION}  
+	\section{Testing}
+	\subsection{Test Case-1}
+	\begin{center}
+		\begin{tabular}{ | p {.5 cm} | p {2 cm} | p {2 cm} |  p {3 cm} |  p {3 cm} |  p {1 cm} |}		
+			\hline
+			\centering	\bf No. &
+			\bf Date  &
+			\bf Action &
+			\bf Expected Result& 
+			\bf Actual Result &
+			\bf Pass? \\
+			\hline
+			
+			1&21-02-22&
+		Access homepage and login&
+			Admin view his login page and login and view homepage& Admin view his login page and login and view homepage.
+			&
+			Yes
+			
+			\\ \hline
+			2&
+			23-02-22&
+			Service management&
+		Admin add and view the service&
+			Admin add and view the service&
+			Yes
+			
+			\\ \hline
+			3&
+			24-02-22&
+			Staff Management&
+			Admin manage staff&
+			Admin manage staff&
+			yes
+			
+			\\ \hline
+			4&
+			25-02-22&
+			workhour management&
+		Admin manage working hour of gym&
+				Admin manage working hour of gym&
+			Yes
+			
+			\\ \hline
+			
+			
+			
+			
+		\end{tabular}
+		
+	\end{center}
+	\pagebreak
+	\begin{center}
+		\begin{table}[ht]
+			\begin{tabular}{ | p {.5 cm} | p {2 cm} | p {2 cm} |  p {3 cm} |  p {3 cm} |  p {1 cm} |}		
+				\hline
+				\centering	\bf No. &
+				\bf Date  &
+				\bf Action &
+				\bf Expected Result& 
+				\bf Actual Result &
+				\bf Pass? \\
+				\hline
+				
+			
+					5&
+				27-02-22&
+				Sign Up and Login&
+				User register to the system and login&
+				User register to the system and login&
+				Yes
+				\\ \hline
+				6&
+				01-03-22&
+			View Profile&
+				User view their profile and upadate&
+			User view their profile and upadate&
+				Yes
+				
+				
+				
+				\\ \hline
+				7&
+				03-03-22&
+				View services&
+			User view services&
+					User view services&
+				Yes
+				
+				
+				
+				\\ \hline
+				8&
+				04-03-22&
+				View working hours&
+				User view working hours&
+			User view working hours&
+				Yes
+				
+				
+				
+				\\ \hline
+					9&
+				06-03-22&
+				View staff&
+				User view staff &
+				User view staff &
+				Yes	\\ \hline
+				
+			\end{tabular}
+			\caption{Test case-1}
+		\end{table}
+		
+	\end{center}
+	\pagebreak
+	\subsection{Test Case-2}
+	\begin{center}
+		
+		\begin{tabular}{ | p {.5 cm} | p {2 cm} | p {2 cm} |  p {3 cm} |  p {3 cm} |  p {1 cm} |}		
+			\hline
+			\centering	\bf No. &
+			\bf Date  &
+			\bf Action &
+			\bf Expected Result& 
+			\bf Actual Result &
+			\bf Pass? \\
+			\hline
+		
+			
+			
+		
+			10&
+			07-03-22&Request for choosing personal trainer
+			&
+			User view staff and send a request they have a personal trainer &
+			User view staff and send a request they have a personal trainer&
+			Yes
+			
+			
+			
+			\\ \hline
+			11&
+			08-03-22&
+		Body measurements&
+			User upload a image and then get the measurements of body&
+			User upload a image and then get the measurements of body&
+			Yes
+			
+			
+			
+			\\ \hline
+			12&
+			11-03-22&View user request&
+			Admin view the request of user and accept or reject the request&
+				Admin view the request of user and accept or reject the request&
+			Yes
+			\\ \hline
+				13&
+			13-03-22&
+			Login and view profile&
+			Staff login and view profile &
+			Staff login and view profile&
+			Yes
+			
+			\\ \hline
+			14&
+			14-03-22&
+			View allocated user&
+			Staff view their allocated users &
+			Staff view their allocated users &
+			Yes
+			
+			\\ \hline
+			15&
+			16-03-22&
+			Schedule fixing of user&
+			Schedule fixing of user&
+			Schedule fixing of user&
+			Yes
+			\\ \hline
+			16&
+			17-03-22&
+			Diet plan creation&
+			Create diet plan for user&
+			Create diet plan for user&
+			Yes
+			\\ \hline
+				17&
+			19-03-22&
+			workout plan&
+			Staff create workoutplan for their own user&
+			Staff create workoutplan for their own user&
+			Yes
+			
+			\\ \hline
+	\end{tabular}
+\captionof{table}{Test case-2}
+\end{table}
+
+
+\end{center}
+\pagebreak
+
+	\subsection{Test Case-3}
+	\begin{center}
+		
+		\begin{tabular}{ | p {.5 cm} | p {2 cm} | p {2 cm} |  p {3 cm} |  p {3 cm} |  p {1 cm} |}		
+			\hline
+			\centering	\bf No. &
+			\bf Date  &
+			\bf Action &
+			\bf Expected Result& 
+			\bf Actual Result &
+			\bf Pass? \\
+			\hline
+			
+		
+			18&
+			20-03-22&
+		View accepted trainer request&
+			User view the accepted trainer request&
+			User view the accepted trainer request&
+			Yes
+			\\ \hline
+			19&
+			21-03-22&
+		View body measurements&
+			Staff view bodymeasurements of their own users &
+				Staff view bodymeasurements of their own users&
+			Yes
+			\\ \hline
+			20&
+			22-03-22&
+			Machine management&
+			Admin view and manage machines&
+			Admin view and manage machines&
+			Yes
+			\\ \hline
+			21&
+			24-03-22&
+		View machines&
+			User view the mac&
+			User view complaint response&
+			Yes
+			
+			\\ \hline
+			
+			22&
+			25-03-22&
+			Normal diet plan&
+			Admin create general dietplan&
+			Admin create general dietplan&
+			Yes
+			\\ \hline
+			23&
+			27-03-22&
+			View Normal diet plan &
+			User view the normal diet plan &
+			User view the normal diet plan&
+			Yes
+			\\ \hline
+			24&
+			28-03-22&
+			Workout plan&
+			Admin create workout plan&
+			Admin create workout plan&
+			Yes
+			\\ \hline
+			25&
+			30-03-22&
+			View workout plan& 
+			User view the workout plan &
+			User view the workout plan&
+			Yes
+			
+			\\ \hline
+			26&
+			1-04-22&
+			View user and opted services&
+			Admin an view the user and opted services&
+			Admin an view the user and opted services&
+			Yes
+			\\ \hline
+		\end{tabular}
+	\captionof{table}{Test case-3}
+\end{table}
+
+
+\end{center}
+\pagebreak
+	
+
+
+\subsection{Test Case-4}
+\begin{center}
+
+\begin{tabular}{ | p {.5 cm} | p {2 cm} | p {2 cm} |  p {3 cm} |  p {3 cm} |  p {1 cm} |}		
+\hline
+\centering	\bf No. &
+\bf Date  &
+\bf Action &
+\bf Expected Result& 
+\bf Actual Result &
+\bf Pass? \\
+\hline
+
+27&
+5-04-22&
+Nutrient content prediction&
+User capture a image and get the nutrient content of food&
+User capture a image and get the nutrient content of food&
+Yes
+\\ \hline
+28&
+7-04-22&
+View services&
+Public view the services&
+Public view the services&
+Yes
+\\ \hline
+29&
+09-04-22&
+Enquiry creation&
+Public make an enquiry&
+Public make an enquiry&
+Yes
+
+\\ \hline
+
+30&
+11-04-22&
+View enquiry&
+Admin view the enquiry&
+Admin view the enquiry&
+Yes
+\\ \hline
+31&
+14-04-22&
+View Satff&
+Public view the services&
+Public view the services&
+Yes
+\\ \hline
+32&
+17-04-22&
+Chat&
+User and staff chat with eachother&
+User and staff chat with eachother&
+Yes
+
+\\ \hline
+33&
+19-04-22&
+Review&
+User enter the review and rating &
+User enter the review and rating&
+Yes
+
+\\ \hline
+34&
+21-04-22&
+View Review&
+Admin and public review &
+Admin and public review&
+Yes
+
+\\ \hline
+\end{tabular}
+
+
+
+
+
+\captionof{table}{Test case-4}
+\end{center}
+\pagebreak
+	
+	\section{Implementation}
+	
+	
+	After testing, the next phase is Implementation. The proposed system is ready for the implementation. Implementation is the realization of an app or execution of a plan, ideas, model, design, specification, standard, algorithm or policy. System implementation phase is the phase, involves the process of converting a new system design into an operational one. The proposed system is AI Based fitness center- it is based on  CNN algorithm. It includes three web applications for Admin who is the head of the fitness center another is  staffs of the center and public users. Android application for Users.
+	
+	
+	\hspace*{12pt}To implement this system,Admin needs a personal computer to host the web application. For hosting an web application, first of all choose web hosting provider means web domain for this project.
+	This web hosting provider provides web space (which means web servers) which store website files of project, as well as technologies and services that are needed for website to be viewed on the internet. Stored file can't exceed the size. Project's website can be host in  "http://in.000webhost.com". This site is free to host and it has free and paid version. Free versions have some limitation to access and need to pay an dollar amount (eg : \$25) for paid version. The website uploaded to server can be accessed by anyone with a particular domain name.
+	
+	\hspace*{12pt}User needs an android smart phone to use this android application that can be install from play store after creating an account in play store. For uploading an android app in play store, first of all sign up in google play console and be a play publisher in console. After sign up, sign in google play console and click on create application. Then enter the title of my project that is AI Based fitness center App and enter the descriptions and related details according to this App such as screenshot, icon, graphic, videos of this application. Title can be only maximum 50 characters. Then, upload APK file or app bundle files of the project (Google Play store’s maximum size for an APK is 100MB). Then set app's content rating by entering the valid email address and can get a total rating of project by clicking calculate rating and can do further following steps.
+	Next step is pricing and distribution. Then can publish app in play store and can download from play store using an android smartphone. 
+	\pagebreak
+	
+	\chapter{RESULT AND DISCUSSION}
+	
+	
+	The project AI Based fitness center App was developed with proper planning and guidance. Agile methodology is used during the development of this project. Planning at each stage was done properly. Each sprint has been conducted as per protocol. Testing was performed at each stage of development. The project is  manage a health care fitness center edavannappara, through web application as well as android application.
+	Web application is managed by the head of the fitness center of for adding details and solving their issues and manage the fitness center. Android application is used by Users so they can easily get to know about fitness.
+\begin{figure}[!ht]
+	\begin{minipage}{0.4\linewidth}
+		\includegraphics[width=1.0\linewidth, height=0.4\textheight]{"C:/Users/user/Desktop/fitness center/pic/Screenshot_2022-05-06-22-35-43-61.jpg"}
+		\caption{Nutreient content prediction}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.4\linewidth}
+		\includegraphics[width=1.0\linewidth, height=0.4\textheight]{"C:/Users/user/Desktop/fitness center/pic/project/Screenshot_2022-05-03-17-27-06-51.jpg"}
+		\caption{Nutreient content prediction }
+	\end{minipage}
+	\end{figure}
+		\begin{figure}[!ht]
+			\begin{minipage}{0.4\linewidth}
+				\includegraphics[width=1.0\linewidth, height=0.4\textheight]{"C:/Users/user/Desktop/fitness center/pic/project/Screenshot\_2022-05-04-22-08-51-25.jpg	"}
+				\caption{Body measurements}
+			\end{minipage}
+		
+	
+	
+\end{figure}
+	\newpage
+
+	
+	\chapter{CONCLUSION}
+	
+	
+	The project "AI Based Fitness Center" put forward an effective way to communicate between fitness center and users,staffs in a perticular gym centers. Technology is improving day by day and everything is possible with our smartphone. This project aims at building an easy and effective way to manage a fitness center and interaction of user, This app brings a new opportunity for the people to interact with gym and take their bodymeasurements and nutrient content of food. It is really user friendly.
+	
+		\section{Future work}
+		In the current application  is used mainly users pay the fees directly to the gym center. As future advancement, online payment optiopna are about to implementd. User can detect the nutrient content and their body measurements more accuratly from the image provided.
+	
+	\pagebreak
+
+	
+
+
+\section{References}
+
+     \subitem[1]     W. Jia, R. Zhao, N. Yao, J. D. Fernstrom,M.
+     H. Fernstrom, R. 
+	J. Sclabassi and M. Sun, A food portion size measurement system
+	 for image-based dietary assessment, in IEEE 35th Annual Northeast
+		conference on Bioengineering, 2009.\\
+\subitem[2] CNN Stanford University. [Online]. Available: http://cs231n.
+		github.io/convolutional-networks/.\\ 
+\subitem	[3] Center of Science in Public Interest. [Online]. Available:
+	 https://cspinet.org/eating-healthy/why-good-nutrition-important. \\
+	\subitem[4] P. Pouladzadeh, S. Shirmohammadi, and R. Al-Maghrabi, 
+		Measuring calorie and nutrition from food image, IEEE Trans. 
+		Instrum. Meas., 2014\\
+\subitem	[5] P. Pouladzadeh, A. Yassine, and S. Shirmohammadi, FooDD: Food 
+	detection dataset for calorie measurement using food images, in 
+	Lecture Notes in Computer Science (including subseries Lecture 
+	Notes in Artificial  Intelligence and Lecture
+Notes in Bioinformatics), 2015.\\
+\subitem	[6] R. A. Guler, N. Neverova, and I. Kokkinos, “Densepose: 
+	Dense human pose estimation in the wild,” in Proceedings of the IEEE 
+	Conference on Computer Vision and Pattern Recognition, 2018,
+	 pp. 7297–7306.\\
+\subitem	[7] https://colorlib.com/wp/free-bootstrap-admin-
+		dashboard-templates/\\
+\subitem	[8] https://www.taimoorsikander.com/registration-form-validation-in-
+		android-studio/\\
+\subitem	[9] https://www.geeksforgeeks.org/cardview-in-android-with-example/\\
+\pagebreak
+\subitem	[10] https://proandroiddev.com/avatarview-for-android-take-your-
+	profile-images-to-the-next-level-2c0c6e06911c\\
+\subitem	[11]https://www.androidhive.info/2011/10/android-login-and-
+	registration-screen-design/\\
+\subitem	[12] https://stackoverflow.com/questions/5944987/
+		how-to-create-a-popup-window-popupwindow-in-android\\
+	\subitem[13]https://code.tutsplus.com/articles/best-ecommerce-android-app-
+		templates--cms-31887\\
+	
+\subitem[14]http://android-steps.blogspot.com/2015/08/profile-page-with-
+circular-image-view.html?m=1\\
+	\subitem	[15]https://www.kaggle.com/datasets\\
+		
+		
+
+\pagebreak
+ \section{Appendix}{
+ 	
+ 	
+ 	\subsection{Source Code}{
+ 		\begin{itemize}
+ 			\item {\bf Body Measurement}
+ 			\begin{verbatim}	
+ 				
+ 		package com.example.aibasedfitnessscheduling;
+ 		import androidx.appcompat.app.AppCompatActivity;
+ 		import androidx.navigation.ui.AppBarConfiguration;
+ 		import android.annotation.TargetApi;
+ 		import android.app.Activity;
+ 		import android.app.AlertDialog;
+ 		import android.content.ComponentName;
+ 		import android.content.DialogInterface;
+ 		import android.content.Intent;
+ 		import android.content.SharedPreferences;
+ 		import android.content.pm.PackageManager;
+ 		import android.content.pm.ResolveInfo;
+ 		import android.database.Cursor;
+ 		import android.graphics.Bitmap;
+ 		import android.graphics.BitmapFactory;
+ 		import android.net.Uri;
+ 		import android.os.Build;
+ 		import android.os.Bundle;
+ 		import android.os.Parcelable;
+ 		import android.preference.PreferenceManager;
+ 		import android.provider.MediaStore;
+ 		import android.view.View;
+ 		import android.widget.Button;
+ 		import android.widget.EditText;
+ 		import android.widget.ImageView;
+ 		import android.widget.Toast;
+ 		import com.android.volley.DefaultRetryPolicy;
+ 		import com.android.volley.NetworkResponse;
+ 		import com.android.volley.Request;
+ 		import com.android.volley.Response;
+ 		import com.android.volley.VolleyError;
+ 		import com.android.volley.toolbox.Volley;
+ 		import com.camerakit.CameraKit;
+ 		import com.camerakit.CameraKitView;
+ 		import org.json.JSONException;
+ 		import org.json.JSONObject;
+ 		import java.io.ByteArrayOutputStream;
+ 		import java.io.File;
+ 		import java.io.FileInputStream;
+ 		import java.io.InputStream;
+ 		import java.util.ArrayList;
+ 		import java.util.HashMap;
+ 		import java.util.List;
+ 		import java.util.Map;
+ 		public class captureimg extends
+ 		 AppCompatActivity implements 
+ 		View.
+ 		OnClickListener {
+ 			private AppBarConfiguration mAppBarConfiguration;
+ 			Button btn;
+ 			private final static int ALL_PERMISSIONS_RESULT = 107;
+ 			private final static int IMAGE_RESULT = 200;
+ 			Uri picUri;
+ 			String imageName="";
+ 			EditText eds;
+ 			byte[] imageBytes=null;
+ 			CameraKitView cameraKitView;
+ 			private ArrayList<String> permissionsToRequest;
+ 			private ArrayList<String> permissionsRejected = new 
+ 			ArrayList<>();
+ 			private ArrayList<String> permissions = new ArrayList<>();
+ 			String apiURL="";
+ 			@Override
+ 			public void onBackPressed() {
+ 				super.onBackPressed();
+ 				cameraKitView.onStop();
+ 					}
+ 				@Override
+ 			protected void onCreate(Bundle savedInstanceState) {
+ 				super.onCreate(savedInstanceState);
+ 				setContentView(R.layout.activity_captureimg);
+ 				btn=(Button)findViewById(R.id.button11) ;
+ 				btn.setOnClickListener(this);
+ 				// onclick event on clicking button
+ 				
+ 				cameraKitView = findViewById(R.id.camera);
+ 				
+ 				cameraKitView.setFacing(CameraKit.FACING_BACK);
+ 				try {
+ 					cameraKitView.onStart();
+ 				}catch (Exception e)
+ 				{
+ 					Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).
+ 					show();
+ 				}
+ 			}
+ 			
+ 			@Override
+ 			public void onClick(View view) {
+ 				int flag=0;
+ 				eds=(EditText) findViewById(R.id.editTextTextPerso
+ 				nName11);
+ 				a();
+ 				String ed=eds.getText().toString();
+ 				if (ed.length()==0){
+ 					eds.setError("please enter height");
+ 					flag++;
+ 				}	}
+ 			
+ 			private Uri getCaptureImageOutputUri() {
+ 				Uri outputFileUri = null;
+ 				File getImage = getExternalFilesDir("");
+ 				if (getImage != null) {
+ 					outputFileUri = Uri.fromFile(new File(getImage.
+ 					getPath(),
+ 					 "profile.png"));
+ 				}
+ 				return outputFileUri;
+ 			}
+ 			public Intent getPickImageChooserIntent() {
+ 				
+ 				Uri outputFileUri = getCaptureImageOutputUri();
+ 				
+ 				List<Intent> allIntents = new ArrayList<>();
+ 				PackageManager packageManager = getPackageManager();
+ 				
+ 				Intent captureIntent = new Intent(MediaStore.ACTION_
+ 				IMAGE_CAPTURE);
+ 				List<ResolveInfo> listCam = packageManager.
+ 				queryIntentActivities
+ 				(captureIntent, 0);
+ 				for (ResolveInfo res : listCam) {
+ 					Intent intent = new Intent(captureIntent);
+ 					intent.setComponent(new ComponentName(res.activityInfo.
+ 					packageName, res.activityInfo.name));
+ 					intent.setPackage(res.activityInfo
+ 					.packageName);
+ 					if (outputFileUri != null) {
+ 						intent.putExtra(MediaStore.
+ 						EXTRA_OUTPUT, outputFileUri);
+ 					}
+ 					allIntents.add(intent);
+ 				}
+ 				Intent galleryIntent = new Intent(Intent.ACTION_GET_
+ 				CONTENT);
+ 				galleryIntent.setType("image/*");
+ 				List<ResolveInfo> listGallery = packageManager.
+ 				queryIntent
+ 				Activities
+ 				(galleryIntent, 0);
+ 				for (ResolveInfo res : listGallery) {
+ 					Intent intent = new Intent(galleryIntent);
+ 					intent.setComponent(new ComponentName(res.activityInfo.
+ 					packageName, res.activityInfo.name));
+ 					intent.setPackage(res.activityInfo.
+ 					packageName);
+ 					allIntents.add(intent);
+ 				}Intent mainIntent = allIntents.get(allIntents.
+ 			size() - 1);
+ 				for (Intent intent : allIntents) {
+ 					if (intent.getComponent().getClassName().
+ 					equals("com.android.documentsui.
+ 					DocumentsActivity"))
+ 					 {
+ 						mainIntent = intent;
+ 						break;}
+ 				}
+ 				allIntents.remove(mainIntent);
+ 		     	Intent chooserIntent = Intent.createChooser
+ 		     	(mainIntent,
+ 		     	 "Select source");
+ 				chooserIntent.putExtra(Intent.
+ 				EXTRA_INITIAL_INTENTS, 
+ 				allIntents.toArray(new Parcelable[allIntents.size()]));
+ 			   return chooserIntent;
+ 			}
+ 		   @Override
+ 			protected void onActivityResult(int 
+ 			requestCode, int resultCode, Intent data) {
+ 				super.onActivityResult(requestCode,
+ 				resultCode,data);
+ 				if (resultCode == Activity.RESULT_OK) {
+ 						if (requestCode == IMAGE_RESULT) {
+ 						Toast.makeText(getApplicationContext(),"11111111",
+ 						Toast.LENGTH_LONG).show();
+ 							String filePath = getImageFilePath(data);
+ 					
+ 						if (filePath != null) {
+ 							Toast.makeText(getApplication
+ 							Context(),"222",Toast.LENGTH_LONG).show();
+ 							Bitmap selectedImage = BitmapFactory.decodeFile(filePath);
+ 							try {
+ 								File fl = new File(filePath);
+ 								int ln = (int) fl.length();
+ 								imageName = fl.getName();
+ 								InputStream inputStream = new FileInputStream(fl);
+ 								ByteArrayOutputStream bos = new ByteArrayOutputStream();
+ 								byte[] b = new byte[ln];
+ 								int bytesRead = 0;
+ 								while ((bytesRead = inputStream.read(b)) != -1)
+ 								{
+ 									bos.write(b, 0, bytesRead);
+ 								}
+ 								inputStream.close();
+ 								imageBytes = bos.toByteArray();
+ 								Toast.makeText
+ 								(getApplicationContext(),
+ 								"hiii",Toast.LENGTH_LONG)
+ 								.show();
+ 									}catch (Exception e){
+ 				              	Toast.makeText(getApplication
+ 				              	Context(),"333"+e.
+ 				              	getMessage().toString(),
+ 				              	Toast.LENGTH_LONG).show();	}
+ 						}
+ 					}	}
+ 			}
+ 			private String getImageFromFilePath(Intent data) {
+ 				boolean isCamera = data == null || data.getData()
+ 				 == null;
+ 					if (isCamera) return getCaptureImageOutputUri().
+ 					getPath();
+ 				else return getPathFromURI(data.getData());
+ 					}
+ 			public String getImageFilePath(Intent data) {
+ 				return getImageFromFilePath(data);
+ 			}
+ 			private String getPathFromURI(Uri contentUri) {
+ 				String[] proj = {MediaStore.Audio.Media.DATA};
+ 				Cursor cursor = getContentResolver().query(contentUri,
+ 				 proj, null, null, null);
+ 				int column_index = cursor.getColumnIndexOrThrow
+ 				(MediaStore.
+ 				Audio.Media.DATA);
+ 				cursor.moveToFirst();
+ 				return cursor.getString(column_index);
+ 			}
+ 			@Override
+ 			protected void onSaveInstanceState(Bundle outState) {
+ 				super.onSaveInstanceState(outState);
+ 				
+ 				outState.putParcelable("pic_uri", picUri);}
+ 			@Override
+ 			protected void onRestoreInstanceState
+ 			(Bundle savedInstanceState) 
+ 			{
+ 				super.onRestoreInstanceState(savedInstance
+ 				State);
+ 			
+ 				picUri = savedInstanceState.getParcelable("pic_uri");
+ 			}
+ 			private ArrayList<String> findUnAskedPermissions
+ 			(ArrayList<String> wanted) {
+ 				ArrayList<String> result = new ArrayList<String>();
+ 				for (String perm : wanted) {
+ 					if (!hasPermission(perm)) {
+ 						result.add(perm);
+ 					}}
+ 				return result;
+ 			}
+ 			
+ 			private boolean hasPermission(String permission) {
+ 				if (canMakeSmores()) {
+ 					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+ 						return (checkSelfPermission(permission) == PackageManager.
+ 						PERMISSION_GRANTED);
+ 					}
+ 				}
+ 				return true;
+ 			}
+ 			
+ 			private void showMessageOKCancel
+ 			(String message, DialogInterface.
+ 			OnClickListener okListener) {
+ 				new AlertDialog.Builder(this)
+ 				.setMessage(message)
+ 				.setPositiveButton("OK", okListener)
+ 				.setNegativeButton("Cancel", null)
+ 				.create()
+ 				.show();
+ 			}
+ 			
+ 			private boolean canMakeSmores() {
+ 				return (Build.VERSION.SDK_INT > Build.VERSION_CODES.
+ 				LOLLIPOP_MR1);
+ 			}
+ 		// Permission to use the camera on phone
+ 			@TargetApi(Build.VERSION_CODES.M)
+ 			@Override
+ 			public void onRequestPermissionsResult(int requestCode,
+ 			 String[] permissions, int[] grantResults) {
+ 				super.onRequestPermissionsResult(requestCode, permissions, 
+ 				grantResults);
+ 				switch (requestCode) {
+ 					
+ 					case ALL_PERMISSIONS_RESULT:
+ 					for (String perms : permissionsToRequest) {
+ 						if (!hasPermission(perms)) {
+ 							permissions
+ 							Rejected.add(perms);
+ 						}
+ 					}
+ 					if (permissionsRejected.size() > 0) {
+ 							if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+ 							if (shouldShowRequestPermissionRationale(permissions
+ 							Rejected.get(0))) {
+ 								showMessageOKCancel("These permissions are mandatory
+ 								 for the
+ 								 application. Please allow access.",
+ 								new DialogInterface.OnClickListener() {
+ 									@Override
+ 									public void onClick(DialogInterface dialog, 
+ 									int which) {
+ 										if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+ 		requestPermissions(permissionsRejected.
+ 		toArray(new String
+ 		[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);	}
+ 									}
+ 								});
+ 								return;}	}
+ 							}
+ 						break;}}
+ 			public void a()
+ 			{	cameraKitView.captureImage(new CameraKitView.
+ 				ImageCallback() {
+ 					@Override
+ 					public void onImage(CameraKitView view, 
+ 					final byte[] photo) {
+ 						
+ 					 {	SharedPreferences sh = PreferenceManager.
+ 								getDefaultSharedPreferences
+ 								(getApplicationContext());
+ 								String hu = sh.getString("ip", "");
+ 								String url = "http://" + hu + ":5000/poseestimation";
+ 								//database connection
+ 								
+ 								VolleyMultipartRequest volleyMultipartRequest = new
+ 								 VolleyMultipart
+ 								 Request(Request.Method.POST, url,
+ 								new Response.Listener<NetworkResponse>() {
+ 									@Override
+ 									public void onResponse(NetworkResponse response) {
+ 										try {
+ 											JSONObject obj = new JSONObject(new String(response.
+ 											data));
+ 											String dis = obj.getString("status");
+ 											if (dis.equalsIgnoreCase("ok")) {
+   	Toast.makeText(getApplicationContext(), "measurement 
+   	taken successfully..", Toast.LENGTH_LONG).show();
+ 									} else {	Toast.makeText(getApplicationContext(),
+ 									 "failed to take measurement..", Toast.LENGTH_LONG).show();	}
+ 										} catch (JSONException e) {
+ 											Toast.makeText(getApplication
+ 											Context(), "error", Toast.
+ 											LENGTH_SHORT)
+ 											.show();
+ 											e.
+ 											printStackTrace();
+ 										}
+ 									}
+ 								},
+ 								new Response.ErrorListener() {
+ 									@Override
+ 									public void onErrorResponse(VolleyError error) {
+ 										Toast.makeText(getApplicationContext(), error.
+ 										getMessage(), Toast.
+ 										LENGTH_SHORT).show();
+ 									}
+ 								}) {
+ 									@Override
+ 									protected Map<String, String> getParams() {
+ 										Map<String, String> params = new HashMap<>();
+ 										SharedPreferences sh = PreferenceManager.getDefaultShared
+ 										Preferences
+ 										(getApplication
+ 										Context());
+ 										params.put("cid", sh.getString("lid",""));
+ 										params.put("height", eds.getText().toString());
+ 										return params;
+ 									}	
+ 									@Override
+ 									protected Map<String, DataPart> getByteData() {
+ 										Map<String, DataPart> params = new HashMap<>();
+ 										long imagename = System.currentTimeMillis();
+ 										params.put("pic", new DataPart("a.jpg", photo));
+ 									return params;
+ 									}
+ 								};
+ 								
+ 							});}}
+ 			\end{verbatim}
+ 		\pagebreak
+ 			
+ 		\end{verbatim}
+ 			\item {\bf Nutrient Content Prediction}
+ 			\begin{verbatim}
+ 			package com.example.aibasedfitnessscheduling;
+ 		    import androidx.appcompat.app.AppCompatActivity;
+ 			import androidx.navigation.ui.AppBarConfiguration;
+ 			import android.annotation.TargetApi;
+ 			import android.app.Activity;
+ 			import android.app.AlertDialog;
+ 			import android.content.ComponentName;
+ 			import android.content.DialogInterface;
+ 			import android.content.Intent;
+ 			import android.content.SharedPreferences;
+ 			import android.content.pm.PackageManager;
+ 			import android.content.pm.ResolveInfo;
+ 			import android.database.Cursor;
+ 			import android.graphics.Bitmap;
+ 			import android.graphics.BitmapFactory;
+ 			import android.net.Uri;
+ 			import android.os.Build;
+ 			import android.os.Bundle;
+ 			import android.os.Parcelable;
+ 			import android.preference.PreferenceManager;
+ 			import android.provider.MediaStore;
+ 			import android.view.View;
+ 			import android.widget.Button;
+ 			import android.widget.EditText;
+ 			import android.widget.TextView;
+ 			import android.widget.Toast;
+ 			import com.android.volley.DefaultRetryPolicy;
+ 			import com.android.volley.NetworkResponse;
+ 			import com.android.volley.Request;
+ 			import com.android.volley.Response;
+ 			import com.android.volley.VolleyError;
+ 			import com.android.volley.toolbox.Volley;
+ 			import com.camerakit.CameraKit;
+ 			import com.camerakit.CameraKitView;
+ 			import org.json.JSONException;
+ 			import org.json.JSONObject;
+ 			import java.io.ByteArrayOutputStream;
+ 			import java.io.File;
+ 			import java.io.FileInputStream;
+ 			import java.io.InputStream;
+ 			import java.util.ArrayList;
+ 			import java.util.HashMap;
+ 			import java.util.List;
+ 			import java.util.Map;
+ 			public class foodcapture extends AppCompatActivity
+ 			 implements View.OnClickListener {
+ 				private AppBarConfiguration mAppBarConfiguration;
+ 				Button btn;
+ 				private final static int ALL_PERMISSIONS_RESULT = 107;
+ 				private final static int IMAGE_RESULT = 200;
+ 				Uri picUri;
+ 				String imageName="";
+ 				TextView tv,ts,tp,tfat,tsod,tsug,tcalo,tfib,tcar
+ 				,tcoles,tpota,ttf;
+ 				byte[] imageBytes=null;
+ 				CameraKitView cameraKitView;
+ 				private ArrayList<String> permissionsToRequest;
+ 				private ArrayList<String> 
+ 				permissionsRejected = new ArrayList<>();
+ 				private ArrayList<String> permissions = new ArrayList<>();
+ 				String apiURL="";
+ 				@Override
+ 				public void onBackPressed() {
+ 					super.onBackPressed();
+ 					cameraKitView.onStop();
+ 					
+ 				}
+ 				@Override
+ 				protected void onCreate(Bundle savedInstanceState) {
+ 					super.onCreate(savedInstanceState);
+ 					setContentView(R.layout.activity_
+ 					foodcapture);
+ 					//Getting value to the declared elements
+ 					btn=(Button)findViewById(R.id.button11) ;
+ 					tv=(TextView)findViewById(R.id.textView77);
+ 					ts=(TextView)findViewById(R.id.textView96);
+ 					tp=(TextView)findViewById(R.id.textView97);
+ 					tfat=(TextView)findViewById(R.id.textView98);
+ 					tsod=(TextView)findViewById(R.id.textView99);
+ 					tsug=(TextView)findViewById(R.id.textView100);
+ 					tcalo=(TextView)findViewById(R.id.textView101);
+ 					tfib=(TextView)findViewById(R.id.textView102);
+ 					tcar=(TextView)findViewById(R.id.textView103);
+ 					tcoles=(TextView)findViewById(R.id.textView104);
+ 					tpota=(TextView)findViewById(R.id.textView105);
+ 					ttf=(TextView)findViewById(R.id.textView107);
+ 					btn.setOnClickListener(this);
+ 					cameraKitView = findViewById(R.id.camera);
+ 					cameraKitView.setFacing(
+ 					CameraKit.FACING_BACK);
+ 					
+ 					try {
+ 						cameraKitView.onStart();
+ 					}catch (Exception e)
+ 					{
+ 						Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).
+ 						show();
+ 					}
+ 				}
+ 				@Override
+ 				public void onClick(View view) {
+ 					a();
+ 				}
+ 			\\Image capture
+ 				private Uri getCaptureImageOutputUri() {
+ 					Uri outputFileUri = null;
+ 					File getImage = getExternalFilesDir("");
+ 					if (getImage != null) {
+ 						outputFileUri = Uri.fromFile(new File
+ 						(getImage.getPath(),
+ 						 "profile.png"));
+ 					}
+ 					return outputFileUri;
+ 				}
+ 				public Intent getPickImageChooserIntent() {
+ 					
+ 					Uri outputFileUri = getCaptureImageOutputUri();
+ 					
+ 					List<Intent> allIntents = new ArrayList<>();
+ 					PackageManager packageManager = getPackageManager();
+ 					
+ 					Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_
+ 					CAPTURE);
+ 					List<ResolveInfo> listCam = packageManager.queryIntent
+ 					Activities
+ 					(captureIntent, 0);
+ 					for (ResolveInfo res : listCam) {
+ 						Intent intent = new Intent(captureIntent);
+ 						intent.setComponent(new ComponentName(res.activityInfo.
+ 						packageName, res.activityInfo.name));
+ 						intent.setPackage(res.
+ 						activityInfo.packageName);
+ 						if (outputFileUri != null) {
+ 							intent.putExtra(MediaStore.
+ 							EXTRA_OUTPUT, outputFileUri);
+ 						}
+ 						allIntents.add(intent);
+ 					}
+ 					
+ 					Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+ 					galleryIntent.setType("image/*");
+ 					List<ResolveInfo> listGallery = packageManager.
+ 					queryIntent
+ 					Activities
+ 					(galleryIntent, 0);
+ 					for (ResolveInfo res : listGallery) {
+ 						Intent intent = new Intent(galleryIntent);
+ 						intent.setComponent(new ComponentName(res.activityInfo.
+ 						packageName, res.activityInfo.name));
+ 						intent.setPackage(res.
+ 						activityInfo.packageName);
+ 						allIntents.add(intent);
+ 					}
+ 					
+ 					Intent mainIntent = allIntents.get(allIntents.size() - 1);
+ 					for (Intent intent : allIntents) {
+ 						if (intent.getComponent().getClassName().equals
+ 						("com.android.
+ 						documentsui.DocumentsActivity")) {
+ 							mainIntent = intent;
+ 							break;
+ 						}
+ 					}
+ 					allIntents.remove(mainIntent);
+ 					
+ 					Intent chooserIntent = Intent.createChooser(mainIntent, 
+ 					"Select source");
+ 					chooserIntent.putExtra(Intent.
+ 					EXTRA_INITIAL_INTENTS, allIntents.toArray(new Parcelable
+ 					[allIntents.size()]));
+ 					
+ 					return chooserIntent;
+ 				}
+ 				@Override
+ 				protected void onActivityResult(int requestCode,
+ 				 int resultCode, Intent data) {
+ 					super.onActivityResult
+ 					(requestCode,resultCode,data);
+ 					if (resultCode == Activity.RESULT_OK) {
+ 						if (requestCode == IMAGE_RESULT) {
+ 							Toast.makeText
+ 							(getApplicationContext(),
+ 							"11111111",Toast.LENGTH_LONG)
+ 							.show();
+ 							String filePath = getImageFilePath(data);
+ 							if (filePath != null) {
+ 								Toast.makeText
+ 								(getApplicationContext(),
+ 								"222",Toast.LENGTH_LONG).
+ 								show();
+ 								Bitmap selectedImage = BitmapFactory.decodeFile
+ 								(filePath);
+ 								
+ 								try {
+ 									File fl = new File(filePath);
+ 									int ln = (int) fl.length();
+ 									imageName = fl.getName();
+ 									InputStream inputStream = new FileInputStream(fl);
+ 									ByteArrayOutputStream bos = new ByteArrayOutputStream();
+ 									byte[] b = new byte[ln];
+ 									int bytesRead = 0;
+ 									while ((bytesRead = inputStream.read(b)) != -1)
+ 									{
+ 										bos.write(b, 0, bytesRead);
+ 									}
+ 									inputStream.close();
+ 									imageBytes = bos.toByteArray();
+ 									Toast.makeText
+ 									(getApplicationContext(),"hiii",
+ 									Toast.LENGTH_LONG).show();
+ 									}catch (Exception e){
+ 									Toast.makeText(getApplicationContext(),
+ 									"333"+e.getMessage().toString(),
+ 									Toast.LENGTH_LONG).show();}
+ 							}
+ 						}	}	}
+ 					private String getImageFromFilePath(Intent data)
+ 					 {
+ 					boolean isCamera = data == null || data.getData()
+ 					 == null;
+ 					
+ 					if (isCamera) return getCaptureImageOutputUri().
+ 					getPath();
+ 					else return getPathFromURI(data.getData());
+ 					}
+ 				public String getImageFilePath(Intent data) {
+ 					return getImageFromFilePath(data);
+ 				}
+ 				
+ 				private String getPathFromURI(Uri contentUri) {
+ 					String[] proj = {MediaStore.Audio.Media.DATA};
+ 					Cursor cursor = getContentResolver().query(
+ 					contentUri, proj, null, null, null);
+ 					int column_index = cursor.getColumnIndexOrThrow
+ 					(MediaStore.Audio.Media.DATA);
+ 					cursor.moveToFirst();
+ 					return cursor.getString(column_index);
+ 				}
+ 				
+ 				@Override
+ 				protected void onSaveInstanceState(Bundle outState) {
+ 					super.onSaveInstanceState(outState);
+ 					
+ 					outState.putParcelable("pic_uri", picUri);
+ 				}
+ 				
+ 				@Override
+ 				protected void onRestoreInstanceState
+ 				(Bundle savedInstanceState)
+ 				 {
+ 					super.onRestoreInstanceState(savedInstanceState);
+ 
+ 				}
+ 				private ArrayList<String> findUnAskedPermissions
+ 				(ArrayList<String> wanted) {
+ 					ArrayList<String> result = new ArrayList<String>();
+ 					
+ 					for (String perm : wanted) {
+ 						if (!hasPermission(perm)) {
+ 							result.add(perm);
+ 						}
+ 					}
+ 					
+ 					return result;
+ 				}
+ 				
+ 				private boolean hasPermission(String permission) {
+ 					if (canMakeSmores()) {
+ 						if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+ 							return (checkSelfPermission
+ 							(permission) == PackageManager.
+ 							PERMISSION_GRANTED);
+ 						}
+ 					}
+ 					return true;
+ 				}
+ 				
+ 				private void showMessageOKCancel(String
+ 				 message, DialogInterface.OnClickListener
+ 				  okListener) {
+ 					new AlertDialog.Builder(this)
+ 					.setMessage(message)
+ 					.setPositiveButton("OK", okListener)
+ 					.setNegativeButton("Cancel", null)
+ 					.create()
+ 					.show();
+ 				}
+ 				
+ 				private boolean canMakeSmores() {
+ 					return (Build.VERSION.SDK_INT > Build.
+ 					VERSION_CODES.
+ 					LOLLIPOP_MR1);
+ 				}
+ 				
+ 				@TargetApi(Build.VERSION_CODES.M)
+ 				@Override
+ 				public void onRequestPermissionsResult(int 
+ 				requestCode, String[] permissions,
+ 				 int[] grantResults) {
+ 					
+ 					super.onRequestPermissionsResult
+ 					(requestCode, permissions, grantResults);
+ 					switch (requestCode) {
+ 						
+ 						case ALL_PERMISSIONS_RESULT:
+ 						for (String perms : permissionsToRequest) {
+ 							if (!hasPermission(perms)) {
+ 								permissionsRejected.add(perms);
+ 							}
+ 						}
+ 						
+ 						if (permissionsRejected.size() > 0) {
+ 							
+ 							
+ 							if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+ 								if (shouldShowRequest
+ 								PermissionRationale
+ 								(permissionsRejected.get(0))) {
+ 									showMessageOKCancel
+ 									("These permissions 
+ 									are mandatory for the application. 
+ 									Please allow access.",
+ 									new DialogInterface.
+ 									OnClickListener() {
+ 										@Override
+ 										public void onClick
+ 										(DialogInterface dialog, int which) {
+ 											if (Build.VERSION
+ 											.SDK_INT >= Build.
+ 											VERSION_CODES.M) 
+ 											{
+ 												
+ 												
+ 												requestPermissions
+ 												(permissionsRejected.toArray(new String
+ 												[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
+ 											}
+ 										}
+ 									});
+ 									return;	}}	}
+ 					break;
+ 					}
+ 				public void a()
+ 				{
+ 					Toast.makeText(getApplicationContext(), "Capture", 
+ 					Toast.
+ 					LENGTH_SHORT).show();
+ 					cameraKitView.captureImage(new CameraKitView.
+ 					ImageCallback() {
+ 						@Override
+ 						public void onImage(CameraKitView view,
+ 						 final byte[] photo) {
+ 							SharedPreferences sh = PreferenceManager.getDefaultShared
+ 									Preferences(getApplicationContext());
+ 									String hu = sh.getString("ip", "");
+ 									String url = "http://" + hu + ":5000/and_foodcapture";
+ 									Toast.makeText(foodcapture.this,
+ 									 "----"+url, Toast.LENGTH_SHORT).show();
+ 									
+ 									VolleyMultipartRequest volleyMultipartRequest = new
+ 									 VolleyMultipart
+ 									Request
+ 									(Request.Method.POST,
+ 									 url,
+ 									new Response.Listener<
+ 									NetworkResponse>() {
+ 										@Override
+ 										public void 
+ 										onResponse
+ 										(NetworkResponse response) {
+ 											try {
+ 												
+ 												JSONObject obj = new JSONObject
+ 												(new String
+ 												(response.data));
+ 												String dis = obj.
+ 												getString
+ 												("status");
+ 												if (dis.
+ 												equalsIgnore
+ 												Case("ok"))
+ 												 {
+ 													Toast.makeText(getApplicationContext(),response.data+"",
+ 													Toast.LENGTH_LONG).show();
+ 													String la=obj.getString("lbl");
+ 													tv.setText(la);
+ 													String sa=obj.getString("serving_size");
+ 													ts.setText(sa);
+ 													String pt=obj.getString("protein");
+ 													tp.setText(pt);
+ 													String sfat=obj.getString("saturated_fat");
+ 													tfat.setText(sfat);
+ 													String tso =obj.getString("sodium");
+ 													tsod.setText(tso);
+ 													String po=obj.getString("pottassium");
+ 													tpota.setText(po);
+ 													String  cho=obj.getString("cholesterol");
+ 													tcoles.setText(cho);
+ 													String car=obj.getString("carbohydrates");
+ 													tcar.setText(car);
+ 													String  fib=obj.getString("fiber");
+ 													tfib.setText(fib);
+ 													String su=obj.getString("sugar");
+ 													tsug.setText(su);
+ 													String tof=obj.getString("totalfat");
+ 													ttf.setText(tof);
+ 													String tca=obj.getString("calories");
+ 													tcalo.setText(tca);
+ 													
+ 													
+ 													
+ 													Toast.makeText(getApplicationContext(), "uploaded
+ 													 successfully", Toast.LENGTH_LONG).show();
+ 													
+ 													cameraKitView.onStop();
+ 													
+ 													
+ 													
+ 													
+ 												}
+ 												
+ 												else {
+ 													
+ 													
+ 													
+ 													
+ 													Toast.makeText(get
+ 													ApplicationContext(), "failed.....", Toast.
+ 													LENGTH_LONG).show();
+ 													
+ 												}
+ 											} catch (JSONException e) {
+ 												Toast.makeText(getApplication
+ 												Context(), "error"+e.getMessage()
+ 												.toString(), Toast.LENGTH_SHORT).show();
+ 												e.printStackTrace();
+ 											}
+ 										}
+ 									},
+ 									new Response.ErrorListener() {
+ 										@Override
+ 										public void onErrorResponse(VolleyError error) {
+ 											Toast.makeText(getApplicationContext(), error.
+ 											getMessage()+"",
+ 											 Toast.
+ 											LENGTH_SHORT).show();
+ 										}
+ 									}) {
+ 										
+ 										
+ 										@Override
+ 										protected Map<String, String> getParams() {
+ 											Map<String, String> params = new HashMap<>();
+ 											SharedPreferences sh = PreferenceManager.
+ 											getDefaultSharedPreferences(getApplicationContext());
+ 											params.put("cid", sh.getString("lid",""));
+ 										
+ 										}
+ 										
+ 										@Override
+ 										protected Map<String, DataPart> getByteData() {
+ 											Map<String, DataPart> params = new HashMap<>();
+ 											long imagename = System.currentTimeMillis();
+ 											params.put("pic", new DataPart("a.jpg", photo));
+ 											
+ 											return params;
+ 										}
+ 									};
+ 									int MY_SOCKET_TIMEOUT_MS = 45000;
+ 									Volley.newRequestQueue(getApplicationContext()).
+ 									add(volleyMultipartRequest).
+ 									setRetryPolicy(new DefaultRetryPolicy(
+ 									MY_SOCKET_TIMEOUT_MS,
+ 									DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+ 									DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+ 								
+ 							}});}
+ 		}
+ 			\end{verbatim}
+ 		\end{itemize}
+ }}
+ 
+ 
+ \pagebreak
+ \section{Screenshots}
+  \subsection {Homepage and Public View Page}
+  This is a landing page Admin and Staff and public users. Admin and staff login through this page but the public just view the staff,services,review and make an enquiry with admin.
+   \begin{figure}[bph]
+  	\centering
+  	\includegraphics[width=1.\linewidth,height=0.4023\textheight]{"C:/Users/user/Desktop/fitness center/pic/landing.PNG"} 
+  	\caption{Homepage} 
+  	\label{u1}
+  \end{figure}
+ \pagebreak
+ 
+ \subsection {Dashboard}
+ This is the dashboard of admin which comes after successful login. Admin can have a variety of options including staff management, machine management, workhour management, diet plan, workout plan, Review, Enquiry..etc.
+ \begin{figure}[bph]
+ 	\centering
+ 	\includegraphics[width=1\linewidth,height=0.4023\textheight]{"C:/Users/user/Desktop/fitness center/pic/admenu.PNG"} 
+ 	\caption{Admin dashboard} 
+ 	\label{u1}
+ \end{figure}
+ \pagebreak
+ \subsection {View Allocation Request}
+ Admin can view the allocation request placed by  users for  they have a personal trainer. Then admin accept or reject the request.
+
+ \begin{figure}[bph]
+ 	\centering
+ 	\includegraphics[width=1\linewidth,height=0.3023\textheight]{"C:/Users/user/Desktop/fitness center/pic/adviewreq.PNG"} 
+ 	\caption{View Allocation Request} 
+ 	\label{u1}
+ \end{figure}
+ 
+ \subsection {View Workouts}
+ Admin can view all the added workouts with their name,description,duration,and have video link about the workouts.
+ 
+ \begin{figure}[bph]
+ 	\centering
+ 	\includegraphics[width=1\linewidth,height=0.3023\textheight]{"C:/Users/user/Desktop/fitness center/pic/adview work.PNG"} 
+ 	\caption{View Workouts } 
+ 	\label{u1}
+ \end{figure}
+ \newpage
+ 
+ \subsection {User registration}
+ Users of the application are gym clients. They can register to this application by themselves. Details include photo, name, place, post,pincode, phone number, email id,height,weight.etc. User can change the details later in edit profile menu.
+ 
+ \begin{figure}[!ht]
+	\begin{minipage}{0.45\linewidth}
+		\includegraphics[width=1.0\linewidth, height=0.4\textheight]{"C:/Users/user/Desktop/fitness center/pic/project/Screenshot\_2022-05-04-20-17-04-77.jpg"}
+	
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.4\linewidth}
+		\includegraphics[width=1.0\linewidth, height=0.4\textheight]{"C:/Users/user/Desktop/fitness center/pic/project/Screenshot\_2022-05-04-20-17-12-97.jpg"}
+	
+	\end{minipage}
+	\caption{Registration of user}
+\end{figure}
+ 	
+  
+ 	
+ \end{figure}
+  \pagebreak
+ \subsection {View Enquiry}
+ Admin view the enquiry placed by public user, then admin reply the enquiry to that public user through the email. 
+ 
+ \begin{figure}[bph]
+ 	\centering
+ 	\includegraphics[width=1\linewidth,height=0.3023\textheight]{"C:/Users/user/Desktop/fitness center/pic/adreview.PNG"} 
+ 	\caption{View Enquiry} 
+ 	\label{u1}
+ \end{figure}
+ 
+ \subsection {View Machines}
+Admin can add and view the machinery deatils with their photos and also delete and edit it.
+ 
+ \begin{figure}[bph]
+ 	\centering
+ 	\includegraphics[width=1\linewidth,height=0.3023\textheight]{"C:/Users/user/Desktop/fitness center/pic/adviemac.PNG"} 
+ 	\caption{View Machines } 
+ 	\label{u1}
+ \end{figure}
+   \pagebreak
+ \subsection {View Allocated user}
+ Staff can view their own users  then add to their dietplan, workouts, view their body measurements..etc. 
+ 
+ \begin{figure}[bph]
+ 	\centering
+ 	\includegraphics[width=1\linewidth,height=0.3023\textheight]{"C:/Users/user/Desktop/fitness center/pic/staffviewalloc.PNG"} 
+ 	\caption{View Allocated user} 
+ 	\label{u1}
+ \end{figure}
+ 
+ \subsection {View Chat}
+Staff can view chat history then chat with user.
+ 
+ \begin{figure}[bph]
+ 	\centering
+ 	\includegraphics[width=1\linewidth,height=0.3023\textheight]{"C:/Users/user/Desktop/fitness center/pic/staffchat.PNG"} 
+ 	\caption{View Chat } 
+ 	\label{u1}
+ \end{figure}
+ \newpage
+ 
+
+
+ \subsection {User homepage  and view staff}
+ User can view their home page after sign in. The user can have variety of option profile, service, workhours, body measurement, nutrient content prediction, staff, machine, personal trainer, diet plan, workouts, review. Then view staff show the staff details then click view more button then view all details of staff.
+ \begin{figure}[!ht]
+ 	\begin{minipage}{0.45\linewidth}
+ 		\includegraphics[width=1.0\linewidth, height=0.4\textheight]{"C:/Users/user/Desktop/fitness center/pic/project/Screenshot\_2022-05-04-20-17-43-97.jpg"}
+ 		\caption{User Homepage}
+ 	\end{minipage}
+ 	\hfill
+ 	\begin{minipage}{0.4\linewidth}
+ 		\includegraphics[width=1.0\linewidth, height=0.4\textheight]{"C:/Users/user/Desktop/fitness center/pic/project/Screenshot\_2022-05-04-20-12-51-80.jpg"}
+ 		\caption{View staff}
+ 	\end{minipage}
+ \end{figure}
+ \pagebreak
+ \subsection {Send request and View accepted request  }
+User send a request to admin they have a personal trainer click the button then choose a service. View accepted request is the admin accept the user request then user can view their own staff and their schedules, dietplan, workouts and chat.
+ \begin{figure}[!ht]
+ 	\begin{minipage}{0.45\linewidth}
+ 		\includegraphics[width=1.0\linewidth, height=0.4\textheight]{"C:/Users/user/Desktop/fitness center/pic/project/Screenshot\_2022-05-04-20-13-19-94.jpg"}
+ 		\caption{Send request}
+ 	\end{minipage}
+ 	\hfill
+ 	\begin{minipage}{0.4\linewidth}
+ 		\includegraphics[width=1.0\linewidth, height=0.4\textheight]{"C:/Users/user/Desktop/fitness center/pic/project/Screenshot\_2022-05-04-20-15-42-40.jpg"}
+ 		\caption{View accepted request }
+ 	\end{minipage}
+ \end{figure}
+ 
+ \newpage
+ \subsection {Body measurements and Nutreient content prediction}
+ User capture his image and get the measurements of body. Nutrient content prediction the user can capture an food image then get the nutrient content of food.
+\begin{figure}[!ht]
+	\begin{minipage}{0.45\linewidth}
+		\includegraphics[width=1.0\linewidth, height=0.35\textheight]{"C:/Users/user/Desktop/fitness center/pic/Screenshot_2022-05-06-22-35-43-61.jpg"}
+		\caption{Nutreient content prediction}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.4\linewidth}
+		\includegraphics[width=1.0\linewidth, height=0.35\textheight]{"C:/Users/user/Desktop/fitness center/pic/project/Screenshot_2022-05-03-17-27-06-51.jpg"}
+		\caption{Nutreient content prediction }
+	\end{minipage}
+\end{figure}
+\begin{figure}[!ht]
+	\begin{minipage}{0.45\linewidth}
+		\includegraphics[width=1.0\linewidth, height=0.35\textheight]{"C:/Users/user/Desktop/fitness center/pic/project/Screenshot\_2022-05-04-22-08-51-25.jpg	"}
+		\caption{Body measurements}
+	\end{minipage}
+	
+	
+	
+\end{figure}
+ \newpage
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ \section{Git History}
+ 
+ \begin{figure}[bph]
+ 	\centering
+ 	\includegraphics[width=1\linewidth,height=0.3023\textheight]{"C:/Users/user/Desktop/fitness center/pic/git1.PNG"} 
+ 	\caption{Git 1} 
+ 	\label{u1}
+ \end{figure}
+ 
+ 
+ \begin{figure}[bph]
+ 	\centering
+ 	\includegraphics[width=1\linewidth,height=0.3023\textheight]{"C:/Users/user/Desktop/fitness center/pic/git2.PNG"} 
+ 	\caption{Git 2} 
+ 	\label{u1}
+ \end{figure}
+ \begin{figure}[bph]
+ 	\centering
+ 	\includegraphics[width=1\linewidth,height=0.3023\textheight]{"C:/Users/user/Desktop/fitness center/pic/git3.PNG"} 
+ 	\caption{Git 3} 
+ 	\label{u1}
+ \end{figure}
+ \begin{figure}[bph]
+ 	\centering
+ 	\includegraphics[width=1\linewidth,height=0.3023\textheight]{"C:/Users/user/Desktop/fitness center/pic/git4.PNG"} 
+ 	\caption{Git 4} 
+ 	\label{u1}\end{figure}
+  \begin{figure}[bph]
+ 	\centering
+ 	\includegraphics[width=1\linewidth,height=0.3023\textheight]{"C:/Users/user/Desktop/fitness center/pic/git5.PNG"} 
+ 	\caption{Git 5} 
+ 	\label{u1}\end{figure}
+ 
+ 
+
+\end{center}
+\end{document}

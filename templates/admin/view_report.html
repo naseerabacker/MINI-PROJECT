@@ -1,0 +1,72 @@
+
+
+{% extends "myhome2.html" %}
+{% block body %}
+
+
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+
+<body xmlns="http://www.w3.org/1999/html">
+<div class="card p-3" style="border:solid black;border-radius:20px">
+<form id="form1" name="form1" method="post" action="/admin_view_report_post">
+<table class="table table-over table-borderless table-striped">
+<!--  <table width="200" border="1">-->
+    <tr>
+      <th scope="col">From<input name="fromdate" type="Date" class="form-control" required /></th>
+
+      <th scope="col">To<input name="todate" type="Date" class="form-control" required /></th>
+      <th>
+          <input type="submit" name="button" id="button" value="SEARCH" class="btn btn-info" /></th></tr></table>
+<table class="table table-over table-borderless table-striped"  >
+  <tr>
+    <th width="18" scope="col">slno</th>
+    <th width="85" scope="col">User Details</th>
+    <th width="46" scope="col">Date</th>
+    <th width="95" scope="col">Amount</th>
+  </tr>
+
+
+
+
+
+  {% for i in data %}
+  <tr>
+<!--      <td> </td>-->
+<!--      <td> </td>-->
+<!--      <td> </td>-->
+<!--      <td> </td>-->
+
+
+    <td>{{loop.index}}</td>
+    <td>{{ i['name']}}&nbsp;</td>
+    <td>{{ i['bdate']}}</td>
+    <td>{{ i['pamount']}}</td>
+
+
+  </tr>
+
+
+
+
+
+
+    {% endfor %}
+ <tr align="centre">
+        <td colspan="2"> </td><td colspan="4">
+        <p><h6>Total Amount:{{ total }}</h6></p>
+    </td>
+
+    </tr>
+</table>
+</form>
+
+</div>
+</body>
+<!--</html>-->
+
+{% endblock %}

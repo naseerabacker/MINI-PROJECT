@@ -14,30 +14,102 @@
   </tr>
 </table>
 
-<table class="table table-striped">
-  <tr>
-    <td>#</td>
-    <td>Destination</td>
-    <td>Image</td>
 
-    <td>Price</td>
-    <td>Description</td>
-    <td>Date</td>
-    <td>&nbsp;</td>
-  </tr>
-  {% for i in data%}
-  <tr>
-    <td>{{loop.index }}</td>
-    <td>{{i["Destination"]}}</td>
-    <td><img src="{{i['image']}}" height="50 px"></td>
-    <td>{{i["Price"]}}</td>
-    <td>{{i["Description"]}}</td>
-    <td>{{i["Date"]}}</td>
-    <td><p><a href="/customer_book_package/{{ i['Package_id'] }}">Book</a></p>
-    <!--<p><a href="/admin_delete_package/{{ i['Package_id'] }}">delete</a></p></td>-->
-  </tr>
-  {% endfor %}
-</table>
+
+
+
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
+                <h1>Tours & Travel Services</h1>
+            </div>
+
+
+
+<div class="row">
+    {% for i in data%}
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                        <!--<i class="fa fa-2x fa-route mx-auto mb-4"></i>-->
+                            <img src="{{i['image']}}" height="250px" width="100%">
+
+                        <h5 class="mb-2">{{i["Destination"]}}</h5>
+                        <p class="card-text">{{i["Date"]}}</p>
+
+
+                        <h5 class="mb-2">{{i["Price"]}}</h5>
+
+                        <p class="m-0">{{i["Description"]}}</p>
+
+    <td><p><a href="/customer_book_package/{{ i['Package_id'] }}">BOOK</a> </p>
+
+                    </div>
+                </div>
+
+
+                    {%endfor%}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+<div class="row">
+    {% for i in data%}
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                        <!--<i class="fa fa-2x fa-route mx-auto mb-4"></i>-->
+                            <img src="{{i['image']}}" height="250px" width="100%">
+
+                        <h5 class="mb-2">{{i["Destination"]}}</h5>
+                        <p class="card-text">{{i["Date"]}}</p>
+
+
+                        <h5 class="mb-2">{{i["Price"]}}</h5>
+
+                        <p class="m-0">{{i["Description"]}}</p>
+
+    <td><p><a href="/customer_book_package/{{ i['Package_id'] }}">BOOK</a> </p>
+    <!--<p><a href="/admin_delete_package/{{ i['Package_id'] }}">DELETE</a></p></td>-->
+
+                    </div>
+                </div>
+
+
+                    {%endfor%}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </form>
 </body>
 {% endblock %}

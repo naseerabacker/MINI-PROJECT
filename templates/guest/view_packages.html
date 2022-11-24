@@ -1,51 +1,48 @@
+
 {% extends "newadmin.html" %}
 {% block body %}
 <body>
-<form action="/guest_view_package_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
-<table width="200" border="1" class="table table-striped">
-  <tr>
-    <td height="97">Destination_Name</td>
-    <td>
-      <input type="text" name="textfield" id="textfield">
-    </td>
-    <td>
-      <input type="submit" name="button" id="button" value="GO">
-   </td>
-  </tr>
-</table>
+<form name="form1" method="post" action="/guest_view_package_post">
 
-<table class="table table-striped">
-  <tr>
-    <td>#</td>
-    <td>Destination</td>
-    <td>Image</td>
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destination</h6>
+                <h1>Explore Top Destination</h1>
+            </div>
+            <div class="row">
 
-    <td>Price</td>
-    <td>Description</td>
-    <!--<td>&nbsp;</td>-->
-  </tr>
-  {% for i in data%}
-  <tr>
-    <td>{{loop.index }}</td>
-    <td>{{i["Destination"]}}</td>
-    <td><img src="{{i['image']}}" height="100 px" width="100"></td>
-    <td>{{i["Price"]}}</td>
-    <td>{{i["Description"]}}</td>
+                    {% for i in data%}
 
-    <!--<td><p><a href="/customer_book_package/{{ i['Package_id'] }}">Booking</a></p>-->
-    <!--<p><a href="/admin_delete_package/{{ i['Package_id'] }}">delete</a></p></td>-->
-  </tr>
-  {% endfor %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="{{i['image']}}" height="100%" width="100%" alt="" >
+                        <!--<a class="destination-overlay text-white text-decoration-none" href="">-->
+
+                          <h5 class="card-title">{{i["Destination"]}}</h5>
+                                <!--<p class="card-text">{{i["Description"]}}</p>-->
+                                <!--<p class="card-text">{{i["Price"]}}</p>-->
 
 
+<!---->
+                        </a>
+                    </div>
+                </div>
 
-</table>
-</form>
+                {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<a href="/customer_add_registeration" class="nav-item nav-link"><span>REGISTER NOW  !!!</span></a>
 
-
-
-
-</body>
 {% endblock %}
+
+
+
+
+
+
+
+

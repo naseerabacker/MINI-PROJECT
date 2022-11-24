@@ -1,0 +1,22 @@
+{% extends "myhome2.html" %}
+{% block body %}
+<body>
+
+<form action="/customer_pay_amount_post" method="post" enctype="multipart/form-data">
+ <img  src="../static/cus/img/qrcode.jpg" alt="Image" height="250px" width="20%"><td>SCAN AND PAY AMOUNT</td>
+<table class="table table-striped">
+    <tr><td>Amount</td><td>{{ data['Price'] }}</td></tr>
+  <tr>
+     <td>File</td><td><input type="file" name="file" ></td>
+  </tr>
+
+
+
+ <tr>
+        <td colspan="2"><input type="submit" name="button" id="button" value="Submit" /></td>
+      </tr>
+
+</table>
+    </form>
+</body>
+{% endblock %}

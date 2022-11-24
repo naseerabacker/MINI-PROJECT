@@ -1,27 +1,34 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
+{% extends "myhome2.html" %}
+{% block body %}
+
+
+
+
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<html>-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
 
 <body>
-<form id="form1" name="form1" method="post" action="/customer_add_registeration_post">
+<form id="form1" name="form1" method="post" action="/customer_edit_profile_post">
   <table class="table table-striped">
     <tr>
       <td>Username</td>
-      <td><input type="text" name="textfield" id="textfield" /></td>
+      <td><input type="text" name="textfield" id="textfield" value="{{ data['Username']}}" /></td>
     </tr>
     <tr>
       <td>Gender</td>
       <td><p>
 
         <label>
-          <input type="radio" name="Radio" value="radio" id="RadioGroup1_0" />
+          <input type="radio" name="Radio" value="female" id="RadioGroup1_0" />
           female</label>
         <br />
         <label>
-<input type="radio" name="Radio" value="radio" id="RadioGroup1_1" />
+<input type="radio" name="Radio" value="male" id="RadioGroup1_1" />
 male</label>
         <br />
         <br />
@@ -29,35 +36,35 @@ male</label>
     </tr>
     <tr>
       <td>Place</td>
-      <td><input type="text" name="textfield3" id="textfield3" /></td>
+      <td><input type="text" name="textfield3" id="textfield3" value="{{ data['Place']}}" /></td>
     </tr>
     <tr>
       <td>Post</td>
-      <td><input type="text" name="textfield4" id="textfield4" /></td>
+      <td><input type="text" name="textfield4" id="textfield4" value="{{ data['Post']}}" /></td>
     </tr>
     <tr>
       <td>Pin</td>
-      <td><input type="text" name="textfield2" id="textfield2" /></td>
+      <td><input type="text" name="textfield2" id="textfield2"value="{{ data['Pin']}}"  /></td>
     </tr>
     <tr>
       <td>City</td>
-      <td><input type="text" name="textfield5" id="textfield5" /></td>
+      <td><input type="text" name="textfield5" id="textfield5"value="{{ data['City']}}"  /></td>
     </tr>
      <tr>
       <td>Email</td>
-      <td><input type="text" name="textfield6" id="textfield6" /></td>
+      <td><input type="text" name="textfield6" id="textfield6"value="{{ data['Email']}}"  /></td>
     </tr>
      <tr>
      <td>Phone_number</td>
-      <td><input type="text" name="textfield7" id="textfield7" /></td>
+      <td><input type="text" name="textfield7" id="textfield7" value="{{ data['Phone_number']}}" /></td>
       </tr>
       <tr>
       <td>Password</td>
-      <td><input type="text" name="textfield8" id="textfield8" /></td>
+      <td><input type="text" name="textfield8" id="textfield8"  /></td>
       </tr>
       <tr>
       <td>Confirm Password</td>
-      <td><input type="text" name="textfield9" id="textfield9" /></td>
+      <td><input type="text" name="textfield9" id="textfield9"  /></td>
 
     </tr>
       <tr>
@@ -65,5 +72,4 @@ male</label>
       </tr>
   </table>
 </form>
-</body>
-</html>
+{% endblock %}

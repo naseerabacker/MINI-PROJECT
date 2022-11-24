@@ -26,7 +26,7 @@
     <td>Complaint</td>
     <td>Reply</td>
     <td>Status</td>
-      <td></td>
+      <!--<td></td>-->
 
   </tr>
     {% for i in data%}
@@ -35,9 +35,10 @@
     <td>&nbsp;{{i['Username'] }}</td>
     <td>{{i['Date'] }}</td>
     <td>&nbsp;{{i['Complaint'] }}</td>
-    <td>&nbsp;{{i['Reply'] }}</td>
+    <td>{% if i['Reply'] =="pending"%} <a href="/admin_send_reply/{{ i['Complaint_id'] }}" class="btn btn-primary">Reply</a> {% else %}{{i['Reply'] }}{% endif %}</td>
     <td>{{i['Status'] }}</td>
-       <td ><a href="/admin_send_reply/{{ i['Complaint_id'] }}" class="btn btn-primary">Reply</a></td></tr>
+       <!--<td ></td>-->
+  </tr>
     {% endfor %}
 
   <tr>

@@ -75,33 +75,66 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <!--<a href="index.html" class="nav-item nav-link active"> FEEDBACKS</a>-->
-                        <!--<a href="about.html" class="nav-item nav-link">SEND-->
-                        <!--FEEDBACK</a>-->
-                        <!--<a href="service.html" class="nav-item nav-link">COMPLAINTS</a>-->
-                        <a href="/customer_view_destination" class="nav-item nav-link">TOUR PACKAGES</a>
-                        <a href="/customer_view_booked_package" class="nav-item nav-link">VIEW BOOKINGS</a>
-                                <a href="/customer_add_registeration" class="nav-item nav-link">EDIT PROFILE</a>
+                        <a href="/customer_view_destination" class="nav-item nav-link">PACKAGES</a>
+
+
+
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">COMPLAINTS</a>
+
+
+                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">BOOKINGS</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                                <a href="customer_view_complaints" class="dropdown-item">VIEW COMPLAINTS</a>
-                                <a href="customer_send_complaint" class="dropdown-item">SENDCOMPLAINTS</a>
-                                <!--<a href="destination.html" class="dropdown-item">Destination</a>-->
-                                <!--<a href="guide.html" class="dropdown-item">Travel Guides</a>-->
-                                <!--<a href="testimonial.html" class="dropdown-item">Testimonial</a>-->
-                            </div>
+                                <a href="/customer_view_booked_package" class="dropdown-item">View bookings</a>
+                                <a href="/customer_view_cancelled_booking" class="dropdown-item">Cancelled bookings</a>
+                                <a href="/view_paid" class="dropdown-item">Paid bookings</a>
+
+
+
+
                         </div>
+                        </div>
+
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">FEEDBACK</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 <a href="/customer_view_feedback" class="dropdown-item">VIEW FEEDBACK</a>
                                 <a href="/customer_send_feedback" class="dropdown-item">SEND FEEDBACK</a>
-                                <!--<a href="destination.html" class="dropdown-item">Destination</a>-->
+                                <!--<a href="/customer_view_notification" class="dropdown-item">notification</a>-->
                                 <!--<a href="guide.html" class="dropdown-item">Travel Guides</a>-->
                                 <!--<a href="testimonial.html" class="dropdown-item">Testimonial</a>-->
                             </div>
                         </div>
+
+
+                                <!--<a href="/customer_edit_profile" class="nav-item nav-link">EDIT PROFILE</a>-->
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">PROFILE</a>
+                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                <a href="customer_edit_profile" class="dropdown-item">Edit profile</a>
+                                <a href="customer_view_profile" class="dropdown-item">View profile</a>
+                                 </div>
+                        </div>
+
+
+
+
+                         <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OTHERS</a>
+                            <div class="dropdown-menu border-0 rounded-0 m-0">
+
+                             <a href="/customer_view_notification" class="nav-item nav-link">NOTIFICATION</a>
+                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">COMPLAINTS</a>
+                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                <a href="/customer_view_complaints" class="dropdown-item">View Complaint</a>
+                                <a href="/customer_send_complaint" class="dropdown-item">Send Complaint</a>
+                            </div>
+
+
+
+                            </div>
+                        </div>
+
+
 
                         <a href="/login" class="nav-item nav-link">LOGOUT</a>
                     </div>
@@ -121,7 +154,8 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
-                            <h1 class="display-3 text-white mb-md-4">Let's Discover The World Together</h1>
+                            <div class="caption fadeIn">
+                                <h1 class="display-3 text-white mb-md-4">Let's Discover The World Together</h1></div>
                             <!--<a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>-->
                         </div>
                     </div>
@@ -132,7 +166,7 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
                             <h1 class="display-3 text-white mb-md-4">Discover Amazing Places With Us</h1>
-                            <a href="customer_view_package" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                            <!--<a href="customer_view_package" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>-->
                         </div>
                     </div>
                 </div>
@@ -188,14 +222,7 @@
                 <a href="" class="navbar-brand">
                     <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
                 </a>
-                <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
-                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
-                <div class="d-flex justify-content-start">
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                </div>
+
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
@@ -245,7 +272,7 @@
                 </p>
             </div>
             <div class="col-lg-6 text-center text-md-right">
-                <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">HTML Codex</a>
+                <p class="m-0 text-white-50">Designed by <a href="#">HTML Codex</a>
                 </p>
             </div>
         </div>

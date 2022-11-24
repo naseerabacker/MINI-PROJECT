@@ -1,0 +1,36 @@
+{% extends "myhome2.html" %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/customer_view_notification_post">
+
+  <table class="table table-striped">
+    <tr>
+    <td>Notification_id</td>
+
+    <!--<td>user_id</td>-->
+    <td>Notification</td>
+    <td>Date</td>
+    <!--<td>status</td>-->
+<td></td>
+  </tr>
+    {% for i in data%}
+  <tr>
+    <td>{{ loop.index }}</td>
+
+    <!--<td>{{i['user_id'] }}</td>-->
+    <td>&nbsp;{{i['notification'] }}</td>
+    <td>{{i['date'] }}</td>
+    <!--<td>{{i['status'] }}</td>-->
+   <!--<td> <p><a href="/customer_delete_complaint/{{ i['Complaint_id'] }}">delete</a></p></td>-->
+
+
+  </tr>
+    {% endfor %}
+
+  <tr>
+      </tr>
+
+</table></form>
+</body>
+<!--</html>-->
+{% endblock %}

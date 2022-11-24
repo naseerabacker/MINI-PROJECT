@@ -1,47 +1,51 @@
 
-<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
-<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
-<!--<head>-->
-<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
-<!--<title>Untitled Document</title>-->
-<!--</head>-->
 {% extends "newadmin.html" %}
 {% block body %}
 <body>
 <form name="form1" method="post" action="/admin_view_destination_post">
 
-    
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destination</h6>
+                <h1>Explore Top Destination</h1>
+            </div>
+            <div class="row">
 
+                    {% for i in data%}
 
- <table class="table table-striped">
-    <tr>
-      <td width="82">Name</td>
-      <td width="70"><input type="text" name="textfield2" id="textfield2"></td>
-      <td width="26"><input type="submit" name="button" id="button" value="GO"></td>
-    </tr>
-  </table>
-  <p>&nbsp;</p>
- <table class="table table-striped">
-    <tr>
-      <td>Slno</td>
-      <td>Destination</td>
-      <td>Image</td>
-      <td>Description</td>
-      <td>&nbsp;</td>
-    </tr>
-    {% for i in data%}
-    <tr>
-      <td>&nbsp;{{loop.index  }}</td>
-      <td>&nbsp;{{i["Destination"]}}</td>
-      <td>&nbsp;<img src="{{i['image']}}" height="100 px" width="100 px"></td>
-      <td>{{i["Description"]}}</td>
-      <td><p><a href="/admin_edit_destination/{{ i['Destination_id'] }}">edit</a></p>
-      <p><a href="/admin_delete_destination/{{ i['Destination_id'] }}">delete</a></p></td>
-    </tr>
-    {%endfor%}
-  </table>
-  <p>&nbsp;</p>
+                <div class="col-lg-4 col-md-6 mb-4">
+                     <div class="team-item bg-white mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="{{i['image']}}" height="100%" width="100%" alt="" >
+                        <!--<a class="destination-overlay text-white text-decoration-none" href="">-->
+                            <div class="team-social">
+                                <a class="btn btn-outline-primary btn-square" href="/admin_delete_destination/{{ i['Destination_id'] }}"style="width:100px;">DELETE</a>
+                                <a class="btn btn-outline-primary btn-square" href="/admin_edit_destination/{{ i['Destination_id'] }}" style="width:100px;">EDIT</a>
+                                <!--<a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-instagram"></i></a>-->
+                                <!--<a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-linkedin-in"></i></a>-->
+                            </div>
+                          <h5 class="card-title">{{i["Destination"]}}</h5>
+                                <!--<p class="card-text">{{i["Description"]}}</p>-->
+                    </div>
+                            <!--<p class="card-text"><a href="/admin_delete_destination/{{ i['Destination_id'] }}" class="btn btn-">DELETE</a>-->
+                        <!--<a href="/admin_edit_destination/{{ i['Destination_id'] }}" class="btn btn-prprimaryimary">EDIT</a></p>-->
+    <!---->
+<!---->
+                        </a>
+                    </div>
+                </div>
+
+                {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </form>
-
 </body>
 {% endblock %}
+
+
+
